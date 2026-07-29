@@ -144,7 +144,7 @@ function HeroReviewStamp({
       target="_blank"
       rel="noopener noreferrer"
       className={cn(
-        "inline-flex max-w-[calc(100vw-2rem)] items-center gap-2 whitespace-nowrap rounded-2xl border border-[#e2e8f0] bg-white px-3.5 py-2.5 shadow-card transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-md md:gap-2.5 md:px-5 md:py-3",
+        "inline-flex max-w-[calc(100vw-2rem)] items-center gap-2 whitespace-nowrap rounded-2xl border border-transparent bg-muted px-3.5 py-2.5 transition-colors duration-300 hover:bg-[#eef2f7] md:gap-2.5 md:px-5 md:py-3",
         className,
       )}
       aria-label={`${rating.toFixed(1)} / 5 · ${reviewCount} opinii Google`}
@@ -1008,7 +1008,7 @@ function Index() {
                           key={line}
                           className={cn(
                             "hero-headline-mobile__line",
-                            isAccent && "hero-headline-mobile__line--nowrap text-gradient-pro",
+                            isAccent && "text-gradient-pro",
                           )}
                         >
                           {line}
@@ -1023,8 +1023,8 @@ function Index() {
                         <span
                           key={line}
                           className={cn(
-                            "block whitespace-nowrap",
-                            isAccent && "text-gradient-pro leading-[1.28]",
+                            "block",
+                            isAccent ? "text-gradient-pro leading-[1.28]" : "whitespace-nowrap",
                           )}
                         >
                           {line}
@@ -1035,7 +1035,7 @@ function Index() {
                 </>
               ) : (
                 (() => {
-                  const accent = "instalacji sanitarnych";
+                  const accent = "i klimatyzacyjne";
                   const idx = HERO_HEADLINE.indexOf(accent);
                   if (idx === -1) return HERO_HEADLINE;
                   return (

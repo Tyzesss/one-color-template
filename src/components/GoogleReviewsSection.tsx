@@ -58,7 +58,7 @@ function GoogleReviewCard({
     <article
       ref={ref}
       className={cn(
-        "card-glass flex h-full flex-col rounded-[1.5rem] border border-[#f1f5f9] p-6 text-left shadow-sm transition-all duration-500 md:hover:-translate-y-1 md:hover:shadow-xl",
+        "card-glass flex h-full flex-col rounded-[1.5rem] border border-[#f1f5f9] p-6 text-left shadow-card transition-all duration-500 md:hover:-translate-y-0.5 md:hover:shadow-md",
         revealClass,
       )}
       style={{ transitionDelay: `${index * 90}ms` }}

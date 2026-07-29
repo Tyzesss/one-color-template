@@ -29,7 +29,7 @@ export const defaultPreset = withPresetDefaults({
   logoUrl: "/logo.png",
   logoIncludesName: true,
   faviconUrl: "/favicon.png",
-  heroImage: "/gallery/hero-pompa-ciepla.webp",
+  heroImage: "/hero-klimatyzacja.png",
   siteTitle: `Klimatyzacja ${siteCity} | ${siteName}`,
   siteKeywords:
     "klimatyzacja, pompy ciepła, montaż klimatyzacji, serwis klimatyzacji, serwis kotłów, rekuperacja",
@@ -139,6 +139,7 @@ export const defaultPreset = withPresetDefaults({
   ],
   heroHeadline: "Montaż i serwis instalacji sanitarnych",
   heroHeadlineMobileLines: ["Montaż i serwis", "instalacji sanitarnych"],
+  heroBadge: "Bezpłatna wycena",
   heroBullets: [
     "Pompy ciepła, rekuperacja, klimatyzacja i kotły.",
     "Zakres i wycena ustalane przed rozpoczęciem prac.",
@@ -149,7 +150,7 @@ export const defaultPreset = withPresetDefaults({
     { label: "Split, multi-split, pompy ciepła", icon: "snowflake" },
     { label: "Dojazd tego samego dnia przy awarii", icon: "map-pin" },
   ],
-  footerTagline: "Klimatyzacja, pompy ciepła i ogrzewanie",
+  footerTagline: "Instalacje Sanitarne",
   servicesSectionSubtitle:
     "Montaż, serwis i przeglądy klimatyzacji, pomp ciepła, wentylacji oraz urządzeń grzewczych.",
   gallerySectionSubtitle: "Realizacje montażowe i serwisowe KLIMATPRO w Twoim mieście i okolicach.",

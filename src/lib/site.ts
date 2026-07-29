@@ -79,6 +79,7 @@ export const REVIEWS = preset.reviews;
 
 export const HERO_HEADLINE = preset.heroHeadline;
 export const HERO_HEADLINE_MOBILE_LINES = preset.heroHeadlineMobileLines;
+export const HERO_BADGE = preset.heroBadge;
 export const HERO_BULLETS = preset.heroBullets;
 export const HERO_DESCRIPTION = preset.heroDescription;
 export const HERO_TRUST_BADGES = preset.heroTrustBadges ?? [];

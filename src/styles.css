@@ -111,9 +111,9 @@
 
   --gradient-brand: var(--gradient-accent);
 
-  --shadow-cool: 0 20px 50px -24px rgb(15 30 75 / 0.1);
-  --shadow-card: 0 1px 2px rgb(15 30 75 / 0.03), 0 4px 20px -6px rgb(15 30 75 / 0.06);
-  --shadow-glow: 0 12px 32px -12px rgb(15 30 75 / 0.1);
+  --shadow-cool: 0 12px 32px -20px rgb(15 30 75 / 0.06);
+  --shadow-card: 0 1px 2px rgb(15 30 75 / 0.02), 0 2px 8px -4px rgb(15 30 75 / 0.04);
+  --shadow-glow: 0 8px 24px -14px rgb(15 30 75 / 0.06);
   --shadow-cta: 0 8px 24px -6px color-mix(in oklch, var(--cta) 35%, transparent),
     0 2px 8px color-mix(in oklch, var(--cta) 18%, transparent);
   --shadow-cta-hover: 0 10px 28px -6px color-mix(in oklch, var(--brand-cyan) 40%, transparent),

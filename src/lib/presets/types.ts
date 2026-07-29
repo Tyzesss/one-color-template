@@ -158,6 +158,8 @@ export type SitePreset = {
   heroHeadline: string;
   /** Jawny podział H1 na mobile (desktop używa heroHeadline). */
   heroHeadlineMobileLines?: string[];
+  /** Krótki pill nad H1 (np. status / USP). */
+  heroBadge?: string;
   heroBullets: string[];
   /** Krótki opis pod miastem — tylko desktop (zamiast bulletów). */
   heroDescription?: string;

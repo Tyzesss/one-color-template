@@ -56,7 +56,7 @@ function MobileTimeline() {
           <div className="timeline-step-v__track">
             <span className="timeline-marker">{step}</span>
           </div>
-          <div className="group min-w-0 flex-1 rounded-[1.5rem] border border-[#f1f5f9] bg-white p-4 text-left shadow-sm transition-all duration-300 hover:shadow-xl md:p-5">
+          <div className="group min-w-0 flex-1 rounded-[1.5rem] border border-[#f1f5f9] bg-white p-4 text-left shadow-card transition-all duration-300 hover:shadow-md md:p-5">
             <StepContent icon={icon} title={title} desc={desc} descShort={descShort} compact />
           </div>
         </li>
@@ -77,7 +77,7 @@ function DesktopTimelineCard({
     <div
       ref={ref}
       className={cn(
-        "group flex w-full flex-1 flex-col rounded-[1.5rem] border border-[#f1f5f9] bg-white p-5 text-left shadow-sm transition-all duration-300 md:hover:shadow-xl",
+        "group flex w-full flex-1 flex-col rounded-[1.5rem] border border-[#f1f5f9] bg-white p-5 text-left shadow-card transition-all duration-300 md:hover:shadow-md",
         revealClass,
       )}
       style={{ transitionDelay: `${index * 100}ms` }}

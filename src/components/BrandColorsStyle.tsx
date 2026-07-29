@@ -5,8 +5,17 @@ function brandColorCss(): string | null {
 
   const vars: string[] = [];
   if (BRAND_COLORS.brandTeal) vars.push(`--brand-teal: ${BRAND_COLORS.brandTeal}`);
-  if (BRAND_COLORS.brandCyan) vars.push(`--brand-cyan: ${BRAND_COLORS.brandCyan}`);
-  if (BRAND_COLORS.cta) vars.push(`--cta: ${BRAND_COLORS.cta}`);
+  if (BRAND_COLORS.brandCyan) {
+    vars.push(`--brand-cyan: ${BRAND_COLORS.brandCyan}`);
+    vars.push(`--accent: ${BRAND_COLORS.brandCyan}`);
+    vars.push(`--ring: ${BRAND_COLORS.brandCyan}`);
+    vars.push(`--sidebar-ring: ${BRAND_COLORS.brandCyan}`);
+  }
+  if (BRAND_COLORS.cta) {
+    vars.push(`--cta: ${BRAND_COLORS.cta}`);
+    vars.push(`--primary: ${BRAND_COLORS.cta}`);
+    vars.push(`--sidebar-primary: ${BRAND_COLORS.cta}`);
+  }
   if (BRAND_COLORS.ctaHover) vars.push(`--cta-hover: ${BRAND_COLORS.ctaHover}`);
 
   return vars.length > 0 ? `:root { ${vars.join("; ")}; }` : null;

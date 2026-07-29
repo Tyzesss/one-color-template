@@ -7,9 +7,9 @@
       <rect x="24" y="0" width="24" height="48" />
     </clipPath>
     <linearGradient id="flame-grad" x1="36" y1="40" x2="36" y2="10" gradientUnits="userSpaceOnUse">
-      <stop stop-color="oklch(0.62 0.22 35)"/>
-      <stop offset="0.55" stop-color="oklch(0.72 0.19 55)"/>
-      <stop offset="1" stop-color="oklch(0.88 0.14 85)"/>
+      <stop stop-color="#0a4a8a"/>
+      <stop offset="0.55" stop-color="#1a92e0"/>
+      <stop offset="1" stop-color="#00c4f0"/>
     </linearGradient>
   </defs>
 
@@ -73,12 +73,12 @@
     />
     <path
       d="M36 37.5C32 32.5 31 26.5 34 21.5C35 19.8 36 18 36 18C36 18 37 19.8 38 21.5C41 26.5 40 32.5 36 37.5Z"
-      fill="oklch(0.95 0.08 85)"
+      fill="#7ddcf5"
       opacity="0.95"
     />
     <path
       d="M36 35C34.2 31.5 33.8 27.5 35.5 24C36.1 23 36 22.2 36 22.2C36 22.2 35.9 23 36.5 24C38.2 27.5 37.8 31.5 36 35Z"
-      fill="oklch(0.98 0.04 95)"
+      fill="#b8ecf8"
     />
   </g>
 </svg>

@@ -65,13 +65,11 @@ import {
   NIP,
   GALLERY,
   GOOGLE_REVIEWS_URL,
-  HERO_IMAGE,
   HERO_HEADLINE,
   HERO_HEADLINE_MOBILE_LINES,
   HERO_BULLETS,
   HERO_DESCRIPTION,
   HERO_TRUST_BADGES,
-  FOOTER_TAGLINE,
   SERVICES_SECTION_SUBTITLE,
   GALLERY_SECTION_SUBTITLE,
   SERVICES,
@@ -145,7 +143,7 @@ function HeroGoogleRating({
       target="_blank"
       rel="noopener noreferrer"
       className={cn(
-        "inline-flex max-w-full flex-wrap items-center gap-x-2 gap-y-1 rounded-full border border-white/[0.06] bg-white/[0.04] text-white/85 backdrop-blur-[10px] transition-smooth hover:border-white/15 hover:bg-white/[0.07]",
+        "inline-flex max-w-full flex-wrap items-center gap-x-2 gap-y-1 rounded-full border border-transparent bg-muted text-foreground transition-smooth hover:border-[#e2e8f0] hover:bg-[#f1f5f9]",
         compact ? "px-2.5 py-1 text-[0.6875rem]" : "px-3 py-1.5 text-xs sm:text-sm",
         className,
       )}
@@ -161,8 +159,8 @@ function HeroGoogleRating({
           />
         ))}
       </div>
-      <span className="font-semibold text-white">{rating.toFixed(1)}</span>
-      <span className="text-white/65">· {reviewCount} opinii Google</span>
+      <span className="font-semibold text-foreground">{rating.toFixed(1)}</span>
+      <span className="text-muted-foreground">· {reviewCount} opinii Google</span>
     </a>
   );
 }
@@ -202,12 +200,12 @@ function HeroTrustBadges({
         return (
           <li key={badge.label} className="flex items-center gap-3">
             <span
-              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-brand-cyan/40 bg-brand-cyan/15 text-brand-cyan md:h-9 md:w-9"
+              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-primary/35 bg-primary/10 text-primary md:h-9 md:w-9"
               aria-hidden
             >
               <Icon className="h-3.5 w-3.5 md:h-4 md:w-4" strokeWidth={2} />
             </span>
-            <span className="text-base leading-snug text-white md:text-lg">{badge.label}</span>
+            <span className="text-base leading-snug text-foreground md:text-lg">{badge.label}</span>
           </li>
         );
       })}
@@ -235,19 +233,19 @@ function LeadForm({
   const moreId = `${idPrefix}-more`;
 
   const inputClass =
-    "h-11 w-full rounded-lg border border-white/20 bg-white/10 px-3.5 text-sm text-white placeholder:text-white/50 outline-none transition-smooth focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/25";
+    "h-11 w-full rounded-xl border border-[#e2e8f0] bg-card px-3.5 text-sm text-foreground placeholder:text-muted-foreground outline-none transition-smooth focus:border-primary focus:ring-2 focus:ring-primary/20";
 
-  const labelClass = "text-xs font-medium text-white/85";
+  const labelClass = "text-xs font-medium text-foreground";
 
   const selectTriggerClass = cn(
-    "h-11 w-full rounded-lg border-white/20 bg-white/10 text-sm text-white shadow-none focus:border-brand-cyan focus:ring-2 focus:ring-brand-cyan/25 data-[placeholder]:text-white/50",
+    "h-11 w-full rounded-xl border-[#e2e8f0] bg-card text-sm text-foreground shadow-none focus:border-primary focus:ring-2 focus:ring-primary/20 data-[placeholder]:text-muted-foreground",
   );
 
   const extraFields = (
     <>
       <div className="grid gap-1.5">
         <Label htmlFor={nameId} className={labelClass}>
-          Imię <span className="text-white/50">(opcjonalnie)</span>
+          Imię <span className="text-muted-foreground">(opcjonalnie)</span>
         </Label>
         <input
           id={nameId}
@@ -260,7 +258,7 @@ function LeadForm({
       </div>
       <div className="grid gap-1.5">
         <Label htmlFor={serviceId} className={labelClass}>
-          Rodzaj usługi <span className="text-white/50">(opcjonalnie)</span>
+          Rodzaj usługi <span className="text-muted-foreground">(opcjonalnie)</span>
         </Label>
         <input type="hidden" name="service" value={service} />
         <Select value={service || undefined} onValueChange={setService}>
@@ -337,7 +335,7 @@ function LeadForm({
             aria-expanded={moreOpen}
             aria-controls={`${idPrefix}-extra`}
             onClick={() => setMoreOpen((open) => !open)}
-            className="inline-flex items-center gap-1 text-[11px] font-medium text-white/50 transition-smooth hover:text-white/80"
+            className="inline-flex items-center gap-1 text-[11px] font-medium text-muted-foreground transition-smooth hover:text-primary"
           >
             <ChevronDown
               className={cn(
@@ -377,7 +375,7 @@ function LeadForm({
       <label
         className={cn(
           "flex cursor-pointer items-center gap-2.5 leading-snug",
-          collapseExtras ? "text-[11px] text-white/55" : "text-xs text-white/75",
+          collapseExtras ? "text-[11px] text-muted-foreground" : "text-xs text-muted-foreground",
         )}
       >
         <span className="relative inline-flex h-4 w-4 shrink-0">
@@ -388,7 +386,7 @@ function LeadForm({
             className="peer absolute inset-0 z-10 cursor-pointer opacity-0"
           />
           <span
-            className="pointer-events-none flex h-4 w-4 items-center justify-center rounded border border-white/35 bg-white/10 transition-colors peer-checked:border-[var(--brand-cyan)] peer-checked:bg-[var(--brand-cyan)] peer-checked:[&_svg]:opacity-100 peer-focus-visible:ring-2 peer-focus-visible:ring-[var(--brand-cyan)]/40"
+            className="pointer-events-none flex h-4 w-4 items-center justify-center rounded border-2 border-[#94a3b8] bg-white transition-colors peer-checked:border-primary peer-checked:bg-primary peer-checked:[&_svg]:opacity-100 peer-focus-visible:ring-2 peer-focus-visible:ring-primary/40"
             aria-hidden
           >
             <svg
@@ -406,7 +404,7 @@ function LeadForm({
         </span>
         <span className="min-w-0">
           Akceptuję{" "}
-          <Link to="/polityka-prywatnosci" className="text-brand-cyan underline underline-offset-2 hover:text-white">
+          <Link to="/polityka-prywatnosci" className="text-primary underline underline-offset-2 hover:text-brand-navy">
             Politykę prywatności
           </Link>{" "}
           i wyrażam zgodę na kontakt.
@@ -438,7 +436,8 @@ function ServiceCard({ s, index }: { s: ServiceItem & { icon: typeof Wrench }; i
     <div
       ref={ref}
       className={cn(
-        "card-glass group relative flex h-full flex-col overflow-hidden rounded-2xl text-left transition-smooth md:hover:-translate-y-0.5 md:hover:border-brand-cyan/25 md:hover:shadow-glow",
+        "group relative flex h-full flex-col overflow-hidden rounded-[2rem] border border-transparent bg-muted text-left transition-all duration-500 md:rounded-[2.5rem]",
+        "md:hover:border-[#f1f5f9] md:hover:bg-white md:hover:shadow-2xl",
         revealClass,
       )}
       style={{ transitionDelay: `${index * 80}ms` }}
@@ -448,7 +447,7 @@ function ServiceCard({ s, index }: { s: ServiceItem & { icon: typeof Wrench }; i
           <img
             src={s.image}
             alt={s.imageAlt ?? s.title}
-            className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+            className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
             loading="lazy"
             onError={() => setImgError(true)}
           />
@@ -458,21 +457,21 @@ function ServiceCard({ s, index }: { s: ServiceItem & { icon: typeof Wrench }; i
             aria-hidden
           >
             <Icon className="h-9 w-9 text-brand-cyan/35" />
-            <span className="text-center text-[0.65rem] font-medium uppercase tracking-wider text-white/30">
+            <span className="text-center text-[0.65rem] font-medium uppercase tracking-wider text-muted-foreground/60">
               Zdjęcie usługi
             </span>
           </div>
         )}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-black/35 to-transparent" />
-        {showImage ? (
-          <div className="absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-background/90 text-brand-cyan shadow-sm backdrop-blur-sm">
-            <Icon className="h-5 w-5" aria-hidden />
-          </div>
-        ) : null}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-foreground/20 to-transparent" />
+        <div className="absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-2xl border border-white/80 bg-white text-primary shadow-sm transition-all duration-500 group-hover:scale-110 group-hover:border-transparent group-hover:bg-primary group-hover:text-white">
+          <Icon className="h-5 w-5" aria-hidden />
+        </div>
       </div>
       <div className="flex flex-1 flex-col p-4 md:p-5">
-        <h3 className="text-base font-semibold text-foreground md:text-lg">{s.title}</h3>
-        <p className="mt-1.5 flex-1 text-sm leading-snug text-muted-foreground md:text-[0.9375rem] md:leading-relaxed">
+        <h3 className="text-base font-semibold tracking-tight text-foreground transition-colors duration-500 md:text-lg">
+          {s.title}
+        </h3>
+        <p className="mt-1.5 flex-1 text-sm leading-snug text-muted-foreground transition-colors duration-500 group-hover:text-foreground/70 md:text-[0.9375rem] md:leading-relaxed">
           {s.desc}
         </p>
       </div>
@@ -553,7 +552,7 @@ function GalleryLightbox({
         )}
 
         <div className="min-w-0 flex-1">
-          <div className="gallery-lightbox__frame overflow-hidden rounded-2xl border border-white/10 bg-brand-navy/30 ring-1 ring-white/10">
+          <div className="gallery-lightbox__frame overflow-hidden rounded-[1.75rem] border border-[#f1f5f9] bg-muted shadow-card">
             <img
               key={index}
               src={item.image}
@@ -592,7 +591,6 @@ function GallerySection() {
   return (
     <>
       <MobileCarousel
-        dark
         items={gallery}
         renderItem={(g) => (
           <GalleryCard
@@ -612,7 +610,7 @@ function GallerySection() {
           <button
             type="button"
             onClick={() => setExpanded((open) => !open)}
-            className="btn-secondary px-6 py-3 text-sm"
+            className="btn-secondary border-primary/25 bg-primary/[0.06] px-6 py-3 text-sm text-primary hover:border-primary/40 hover:bg-primary/10 hover:text-primary"
             aria-expanded={expanded}
           >
             <ChevronDown
@@ -653,7 +651,7 @@ function GalleryCard({
       <button
         type="button"
         onClick={onOpen}
-        className="relative block w-full aspect-[4/3] overflow-hidden rounded-xl border border-white/15 bg-brand-deep text-left shadow-card ring-1 ring-white/10 transition-smooth md:group-hover:-translate-y-0.5 md:group-hover:border-brand-cyan/30 md:group-hover:shadow-glow cursor-zoom-in"
+        className="relative block w-full aspect-[4/3] cursor-zoom-in overflow-hidden rounded-[1.5rem] border border-[#f1f5f9] bg-muted text-left shadow-sm transition-all duration-500 md:group-hover:-translate-y-1 md:group-hover:shadow-xl"
         aria-label={`Powiększ: ${g.alt}`}
       >
         <img
@@ -666,7 +664,7 @@ function GalleryCard({
           height={600}
         />
         <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-foreground/25 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
           aria-hidden
         />
       </button>
@@ -694,9 +692,11 @@ const contactCards = [
 function ContactCard({
   c,
   index = 0,
+  stretch = false,
 }: {
   c: (typeof contactCards)[number];
   index?: number;
+  stretch?: boolean;
 }) {
   const Icon = c.icon;
   const { ref, className: revealClass } = useReveal<HTMLDivElement>();
@@ -704,26 +704,27 @@ function ContactCard({
     <div
       ref={ref}
       className={cn(
-        "flex h-[5.5rem] w-full min-w-0 items-center gap-4 px-5 text-left transition-smooth md:h-24 md:px-5",
-        "rounded-2xl border border-white/[0.08] bg-white/[0.04]",
-        "md:hover:border-white/15 md:hover:bg-white/[0.06]",
+        "group flex w-full min-w-0 items-center gap-4 px-5 text-left transition-all duration-300 md:px-5",
+        stretch ? "h-full min-h-[5.5rem] md:min-h-24" : "h-[5.5rem] md:h-24",
+        "rounded-[1.5rem] border border-[#f1f5f9] bg-white shadow-sm",
+        "hover:border-transparent hover:bg-white hover:shadow-xl",
         revealClass,
       )}
       style={{ transitionDelay: `${index * 80}ms` }}
     >
       <div
-        className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-brand-cyan/45 bg-brand-cyan/10 text-brand-cyan md:h-12 md:w-12"
+        className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-muted text-primary shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:text-white md:h-12 md:w-12"
         aria-hidden
       >
         <Icon className="h-5 w-5 md:h-[1.35rem] md:w-[1.35rem]" strokeWidth={2} />
       </div>
       <div className="min-w-0">
-        <p className="text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-white/50 md:text-xs">
+        <p className="text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-muted-foreground md:text-xs">
           {c.title}
         </p>
         <p
           className={cn(
-            "mt-1 text-[0.9375rem] font-semibold leading-snug text-white md:text-lg",
+            "mt-1 text-[0.9375rem] font-semibold leading-snug text-foreground transition-colors duration-300 group-hover:text-primary md:text-lg",
             c.type === "email" ? "break-all" : "break-words",
           )}
         >
@@ -737,12 +738,12 @@ function ContactCard({
       href={c.href}
       target={c.type === "address" ? "_blank" : undefined}
       rel="noreferrer"
-      className="group block w-full min-w-0"
+      className={cn("block w-full min-w-0", stretch && "flex-1")}
     >
       {inner}
     </a>
   ) : (
-    <div className="w-full min-w-0">{inner}</div>
+    <div className={cn("w-full min-w-0", stretch && "flex-1")}>{inner}</div>
   );
 }
 
@@ -811,7 +812,7 @@ function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    const onScroll = () => setScrolled(window.scrollY > 20);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -843,15 +844,19 @@ function SiteHeader() {
     });
   };
 
+  const solid = scrolled || menuOpen;
+
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 border-b border-white/10 bg-background transition-smooth",
-        scrolled && "shadow-card",
+        "fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,box-shadow,padding] duration-500 ease-out",
+        solid
+          ? "border-b border-[#f1f5f9] bg-white py-2 md:py-3"
+          : "border-b border-transparent bg-transparent py-3 md:py-5",
       )}
     >
-      <div className="relative z-[60] bg-background">
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 md:h-20">
+      <div className="relative z-[60]">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 md:h-[5.25rem]">
           <a
             href="#top"
             className="flex items-center gap-2"
@@ -860,7 +865,7 @@ function SiteHeader() {
               goTo("#top");
             }}
           >
-            <SiteLogo imageClassName="h-11 max-w-[220px] md:h-14 md:max-w-[340px]" />
+            <SiteLogo imageClassName="h-12 max-w-[240px] md:h-16 md:max-w-[360px]" />
           </a>
 
           <nav className="hidden items-center gap-7 text-base font-medium md:flex">
@@ -868,7 +873,7 @@ function SiteHeader() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-muted-foreground transition-smooth hover:text-brand-cyan hover:underline hover:underline-offset-4"
+                className="text-muted-foreground transition-smooth hover:text-primary hover:underline hover:underline-offset-4"
               >
                 {link.label}
               </a>
@@ -885,7 +890,7 @@ function SiteHeader() {
             <button
               type="button"
               onClick={() => setMenuOpen((open) => !open)}
-              className="relative inline-flex h-10 w-10 items-center justify-center rounded-full text-foreground transition-smooth hover:bg-white/10 md:hidden"
+              className="relative inline-flex h-10 w-10 items-center justify-center rounded-full text-foreground transition-smooth hover:bg-muted md:hidden"
               aria-expanded={menuOpen}
               aria-controls="mobile-nav"
               aria-label={menuOpen ? "Zamknij menu" : "Otwórz menu"}
@@ -916,7 +921,7 @@ function SiteHeader() {
         aria-label="Zamknij menu"
         onClick={() => setMenuOpen(false)}
         className={cn(
-          "fixed inset-x-0 bottom-0 top-16 z-40 bg-black/50 transition-opacity duration-300 md:hidden",
+          "fixed inset-x-0 bottom-0 top-20 z-40 bg-foreground/30 transition-opacity duration-300 md:hidden",
           menuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0",
         )}
       />
@@ -926,8 +931,8 @@ function SiteHeader() {
         id="mobile-nav"
         className={cn(
           "absolute left-3 right-3 top-[calc(100%+0.5rem)] z-50 origin-top md:hidden",
-          "rounded-2xl border border-white/10 bg-background p-2",
-          "shadow-[0_20px_50px_-20px_oklch(0_0_0/0.65)]",
+          "rounded-2xl border border-[#f1f5f9] bg-white p-2",
+          "shadow-[0_20px_50px_-20px_rgb(15_30_75/0.18)]",
           "transition-[opacity,transform] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
           menuOpen
             ? "pointer-events-auto translate-y-0 opacity-100"
@@ -947,9 +952,9 @@ function SiteHeader() {
                 goTo(link.href);
               }}
               className={cn(
-                "rounded-xl px-3.5 py-2.5 text-[0.95rem] font-semibold tracking-tight text-white/90",
+                "rounded-xl px-3.5 py-2.5 text-[0.95rem] font-semibold tracking-tight text-foreground",
                 "transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
-                "hover:bg-white/5 hover:text-brand-cyan active:bg-white/8",
+                "hover:bg-muted hover:text-primary active:bg-muted",
                 menuOpen ? "translate-y-0 opacity-100" : "-translate-y-1 opacity-0",
               )}
               style={{ transitionDelay: menuOpen ? `${50 + i * 30}ms` : "0ms" }}
@@ -958,7 +963,7 @@ function SiteHeader() {
             </a>
           ))}
         </nav>
-        <div className="mt-1.5 border-t border-white/10 p-1.5 pt-2.5">
+        <div className="mt-1.5 border-t border-[#f1f5f9] p-1.5 pt-2.5">
           <a
             href={PHONE_HREF}
             tabIndex={menuOpen ? undefined : -1}
@@ -976,40 +981,20 @@ function SiteHeader() {
 
 function Index() {
   const { googleReviews } = Route.useLoaderData();
-  const [heroPrime, setHeroPrime] = useState(false);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const key = "klimatpro-hero-prime";
-    if (!sessionStorage.getItem(key)) {
-      sessionStorage.setItem(key, "1");
-      setHeroPrime(true);
-    }
-  }, []);
 
   return (
     <div className="page-shell">
-      <div className="page-ambient-scatter" aria-hidden />
       <div className="page-content">
       <SiteHeader />
 
-      <div className={cn("hero-services-unit", heroPrime && "hero-prime")}>
-        <div className="hero-services-bg" aria-hidden>
-          <div
-            className="hero-photo"
-            style={{ backgroundImage: `url(${HERO_IMAGE ?? "/gallery/placeholder-1.svg"})` }}
-          />
-          <div className="hero-photo-scrim" />
-        </div>
-
+      <div className="hero-services-unit">
         <section
           id="top"
-          className="relative z-10 scroll-mt-24 px-4 pt-6 pb-12 text-foreground max-md:min-h-[36rem] md:min-h-[calc(100svh-7.5rem)] md:pt-16 md:pb-20"
+          className="relative z-10 flex min-h-dvh flex-col scroll-mt-24 bg-white pt-20 text-foreground md:min-h-svh md:pt-40"
         >
         <div
           className={cn(
-            "relative mx-auto w-full max-w-7xl md:items-start",
+            "relative mx-auto w-full max-w-7xl flex-1 px-4 md:items-start",
             SECTIONS.contactForm
               ? "md:grid md:grid-cols-[minmax(0,1.12fr)_minmax(0,0.98fr)] md:gap-9 lg:gap-11"
               : "md:text-center",
@@ -1023,45 +1008,68 @@ function Index() {
                 : "md:mx-auto md:max-w-2xl",
             )}
           >
-            <div className="hero-enter hero-enter-delay-0 mb-3 flex justify-center md:hidden">
+            <div className="hero-enter hero-enter-delay-0 mb-2 flex justify-center md:hidden">
               <HeroGoogleRating
                 rating={googleReviews.rating}
                 reviewCount={googleReviews.reviewCount}
                 profileUrl={googleReviews.profileUrl || GOOGLE_REVIEWS_URL}
-                className="gap-x-2.5 px-3.5 py-1.5 text-sm"
+                compact
               />
             </div>
 
-            <h1 className="hero-enter hero-enter-delay-1 relative font-bold leading-[1.12] max-md:mx-auto md:text-[clamp(2.5rem,2.65vw+1.1rem,3.75rem)] md:leading-[1.14]">
+            <h1 className="hero-enter hero-enter-delay-1 relative font-bold leading-[1.2] max-md:mx-auto md:text-[clamp(2.5rem,2.65vw+1.1rem,3.75rem)] md:leading-[1.22]">
               {HERO_HEADLINE_MOBILE_LINES?.length ? (
                 <>
                   <span className="hero-headline-mobile md:hidden">
-                    {HERO_HEADLINE_MOBILE_LINES.map((line, i) => (
-                      <span
-                        key={line}
-                        className={cn(
-                          "hero-headline-mobile__line",
-                          i === HERO_HEADLINE_MOBILE_LINES.length - 1 && "hero-headline-mobile__line--nowrap",
-                        )}
-                      >
-                        {line}
-                      </span>
-                    ))}
+                    {HERO_HEADLINE_MOBILE_LINES.map((line, i) => {
+                      const isAccent = i === HERO_HEADLINE_MOBILE_LINES.length - 1;
+                      return (
+                        <span
+                          key={line}
+                          className={cn(
+                            "hero-headline-mobile__line",
+                            isAccent && "hero-headline-mobile__line--nowrap text-gradient-pro",
+                          )}
+                        >
+                          {line}
+                        </span>
+                      );
+                    })}
                   </span>
                   <span className="hidden md:block">
-                    {HERO_HEADLINE_MOBILE_LINES.map((line) => (
-                      <span key={line} className="block whitespace-nowrap">
-                        {line}
-                      </span>
-                    ))}
+                    {HERO_HEADLINE_MOBILE_LINES.map((line, i) => {
+                      const isAccent = i === HERO_HEADLINE_MOBILE_LINES.length - 1;
+                      return (
+                        <span
+                          key={line}
+                          className={cn(
+                            "block whitespace-nowrap",
+                            isAccent && "text-gradient-pro leading-[1.28]",
+                          )}
+                        >
+                          {line}
+                        </span>
+                      );
+                    })}
                   </span>
                 </>
               ) : (
-                HERO_HEADLINE
+                (() => {
+                  const accent = "instalacji sanitarnych";
+                  const idx = HERO_HEADLINE.indexOf(accent);
+                  if (idx === -1) return HERO_HEADLINE;
+                  return (
+                    <>
+                      {HERO_HEADLINE.slice(0, idx)}
+                      <span className="text-gradient-pro">{accent}</span>
+                      {HERO_HEADLINE.slice(idx + accent.length)}
+                    </>
+                  );
+                })()
               )}
             </h1>
 
-            <p className="hero-enter hero-enter-delay-2 mt-2 text-xl font-medium text-white/85 md:mt-3.5 md:text-[1.7rem]">
+            <p className="hero-enter hero-enter-delay-2 mt-1.5 text-lg font-medium text-brand-navy md:mt-3.5 md:text-[1.7rem]">
               {SITE_CITY}
             </p>
 
@@ -1079,15 +1087,15 @@ function Index() {
                 <HeroTrustBadges badges={HERO_TRUST_BADGES} />
               </div>
             ) : HERO_DESCRIPTION ? (
-              <p className="hero-enter hero-enter-delay-3 mt-5 hidden max-w-lg text-left text-base leading-relaxed text-white/75 md:mt-6 md:block lg:text-[1.0625rem] lg:leading-[1.65]">
+              <p className="hero-enter hero-enter-delay-3 mt-5 hidden max-w-lg text-left text-base leading-relaxed text-muted-foreground md:mt-6 md:block lg:text-[1.0625rem] lg:leading-[1.65]">
                 {HERO_DESCRIPTION}
               </p>
             ) : (
-              <ul className="hero-enter hero-enter-delay-3 mx-auto mt-4 hidden max-w-xl space-y-2.5 text-left text-base leading-snug text-white/85 md:mx-0 md:mt-6 md:block md:max-w-none md:space-y-3.5 md:text-[1.25rem] md:leading-relaxed">
+              <ul className="hero-enter hero-enter-delay-3 mx-auto mt-4 hidden max-w-xl space-y-2.5 text-left text-base leading-snug text-foreground md:mx-0 md:mt-6 md:block md:max-w-none md:space-y-3.5 md:text-[1.25rem] md:leading-relaxed">
                 {HERO_BULLETS.map((bullet) => (
                   <li key={bullet} className="flex items-start gap-2.5 md:gap-3">
                     <span
-                      className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-cyan md:mt-3 md:h-2 md:w-2"
+                      className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary md:mt-3 md:h-2 md:w-2"
                       aria-hidden
                     />
                     {bullet}
@@ -1101,32 +1109,32 @@ function Index() {
             </div>
 
             {/* Mobile: Call przy H1 */}
-            <div className="hero-enter hero-enter-delay-5 mt-5 flex justify-center md:hidden">
+            <div className="hero-enter hero-enter-delay-5 mt-4 flex justify-center md:hidden">
               <CTAButton className="px-7 py-3.5 text-[0.9375rem]" />
             </div>
           </div>
 
           {SECTIONS.contactForm ? (
             <>
-              <div className="hero-enter hero-enter-delay-6 mx-6 my-6 flex items-center gap-3 md:hidden" aria-hidden>
-                <span className="h-px flex-1 bg-white/12" />
-                <span className="text-xs font-medium uppercase tracking-wide text-white/45">lub</span>
-                <span className="h-px flex-1 bg-white/12" />
+              <div className="hero-enter hero-enter-delay-6 mx-6 my-7 flex items-center gap-3 md:hidden" aria-hidden>
+                <span className="h-px flex-1 bg-[#cbd5e1]" />
+                <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">lub</span>
+                <span className="h-px flex-1 bg-[#cbd5e1]" />
               </div>
 
               {/* Mobile: sam formularz */}
-              <div className="hero-enter hero-enter-delay-7 w-full rounded-2xl border border-white/[0.06] bg-white/[0.04] p-5 backdrop-blur-[10px] md:hidden">
-                <p className="text-center text-base font-semibold text-white">{SECTION_TITLES.formHeadline}</p>
-                <p className="mt-1 text-center text-xs text-white/60">{SECTION_TITLES.formSubline}</p>
+              <div className="hero-enter hero-enter-delay-7 w-full rounded-[1.75rem] bg-muted p-5 md:hidden">
+                <p className="text-center text-base font-semibold text-foreground">{SECTION_TITLES.formHeadline}</p>
+                <p className="mt-1 text-center text-xs text-muted-foreground">{SECTION_TITLES.formSubline}</p>
                 <div className="mt-3.5">
                   <LeadForm idPrefix="hero-mobile" collapseExtras />
                 </div>
               </div>
 
               {/* Desktop: formularz — top równo z chipem opinii */}
-              <div className="hero-enter hero-enter-delay-7 mt-5 hidden w-full self-start rounded-2xl border border-white/[0.06] bg-white/[0.04] p-5 text-left backdrop-blur-[10px] md:col-start-2 md:row-start-1 md:mt-0 md:block md:p-8 lg:p-9">
-                <p className="text-xl font-semibold text-white">Nie możesz się skontaktować?</p>
-                <p className="mt-1.5 text-base text-white/75">
+              <div className="hero-enter hero-enter-delay-7 mt-5 hidden w-full self-start rounded-[1.75rem] bg-muted p-5 text-left md:col-start-2 md:row-start-1 md:mt-0 md:block md:p-8 lg:p-9">
+                <p className="text-xl font-semibold text-foreground">Nie możesz się skontaktować?</p>
+                <p className="mt-1.5 text-base text-muted-foreground">
                   Zostaw numer, oddzwonimy do Ciebie.
                 </p>
                 <div className="mt-6 [&_input]:h-12 [&_button[role=combobox]]:h-12 [&_.text-sm]:text-base [&_label]:text-sm">
@@ -1137,32 +1145,32 @@ function Index() {
           ) : null}
         </div>
 
-          <div className="pointer-events-none absolute inset-x-0 bottom-5 z-10 hidden justify-center md:flex">
+          <div className="relative z-10 mt-auto flex justify-center pb-5 pt-6 md:pb-10 md:pt-8">
             <a
               href="#uslugi"
               onClick={(e) => {
                 e.preventDefault();
                 scrollToSection("#uslugi");
               }}
-              className="hero-scroll-cue pointer-events-auto flex flex-col items-center gap-1 text-white/45 transition-smooth hover:text-white/75"
+              className="hero-scroll-cue flex flex-col items-center gap-1.5 text-primary transition-smooth hover:text-primary/80"
             >
-              <span className="text-[0.6875rem] font-medium uppercase tracking-[0.14em]">
+              <span className="text-xs font-semibold uppercase tracking-[0.16em] md:text-sm">
                 Przewiń
               </span>
-              <ChevronDown className="hero-scroll-cue__icon h-5 w-5" strokeWidth={1.75} aria-hidden />
+              <ChevronDown className="hero-scroll-cue__icon h-6 w-6 md:h-7 md:w-7" strokeWidth={2} aria-hidden />
             </a>
           </div>
         </section>
 
         <Section
           id="uslugi"
+          tone="white"
           className="max-md:pb-6"
           eyebrow={SECTION_TITLES.servicesEyebrow}
           title={SECTION_TITLES.servicesTitle}
           subtitle={SERVICES_SECTION_SUBTITLE}
-          glow={{ x: "22%", y: "58%", strength: 0.035 }}
         >
-          <MobileCarousel dark items={services} renderItem={(s) => <ServiceCard s={s} index={services.indexOf(s)} />} />
+          <MobileCarousel items={services} renderItem={(s) => <ServiceCard s={s} index={services.indexOf(s)} />} />
           <div className="hidden md:grid grid-cols-3 gap-5 lg:gap-6">
             {services.map((s, i) => (
               <ServiceCard key={s.title} s={s} index={i} />
@@ -1182,10 +1190,10 @@ function Index() {
       {SECTIONS.gallery ? (
         <Section
           id="realizacje"
+          tone="white"
           eyebrow={SECTION_TITLES.galleryEyebrow}
           title={SECTION_TITLES.galleryTitle}
           subtitle={GALLERY_SECTION_SUBTITLE}
-          glow={{ x: "44%", y: "48%" }}
         >
           <GallerySection />
         </Section>
@@ -1194,11 +1202,10 @@ function Index() {
       {SECTIONS.reviews ? (
         <Section
           id="opinie"
-          panel
+          tone="muted"
           eyebrow={SECTION_TITLES.reviewsEyebrow}
           title={SECTION_TITLES.reviewsTitle}
           subtitle={SECTION_TITLES.reviewsSubtitle}
-          glow={{ x: "78%", y: "36%", cyan: true }}
         >
           <GoogleReviewsSection data={googleReviews} />
         </Section>
@@ -1207,23 +1214,35 @@ function Index() {
       {SECTIONS.faq ? (
         <Section
           id="faq"
+          tone="white"
           eyebrow={SECTION_TITLES.faqEyebrow}
           title={SECTION_TITLES.faqTitle}
           subtitle={SECTION_TITLES.faqSubtitle}
         >
         <Reveal>
-          <div className="card-glass mx-auto max-w-3xl rounded-xl px-2 md:max-w-4xl md:px-5 lg:max-w-5xl lg:px-6">
-            <Accordion type="single" collapsible className="w-full text-left">
+          <Accordion
+            type="single"
+            collapsible
+            className="mx-auto flex w-full max-w-3xl flex-col gap-3 text-left md:max-w-4xl"
+          >
             {faqs.map((f, i) => (
-              <AccordionItem key={i} value={`item-${i}`} className="border-white/10 px-2">
-                <AccordionTrigger className="text-left text-base font-semibold text-foreground hover:text-brand-cyan hover:no-underline">
-                  {f.q}
+              <AccordionItem
+                key={i}
+                value={`item-${i}`}
+                className="overflow-hidden rounded-[1.5rem] border border-transparent border-b-0 bg-muted transition-all duration-300 hover:border-[#f1f5f9] hover:bg-white hover:shadow-xl data-[state=open]:border-[#f1f5f9] data-[state=open]:bg-white data-[state=open]:shadow-xl"
+              >
+                <AccordionTrigger className="group gap-4 px-5 py-5 text-left text-base font-bold tracking-tight text-foreground hover:no-underline hover:text-primary data-[state=open]:text-primary [&>svg]:hidden [&[data-state=open]>div]:rotate-180 [&[data-state=open]>div]:bg-primary [&[data-state=open]>div]:text-white">
+                  <span className="flex-1">{f.q}</span>
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white text-muted-foreground shadow-sm transition-all duration-300 group-hover:bg-primary group-hover:text-white">
+                    <ChevronDown className="h-4 w-4" />
+                  </div>
                 </AccordionTrigger>
-                <AccordionContent className="text-sm leading-relaxed text-muted-foreground md:text-base">{f.a}</AccordionContent>
+                <AccordionContent className="border-t border-white/80 px-5 pb-5 pt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
+                  {f.a}
+                </AccordionContent>
               </AccordionItem>
             ))}
-            </Accordion>
-          </div>
+          </Accordion>
         </Reveal>
       </Section>
       ) : null}
@@ -1231,70 +1250,63 @@ function Index() {
       {/* KONTAKT + WYCENA */}
       <section
         id="kontakt"
-        className="relative scroll-mt-24 overflow-hidden px-4 pt-10 pb-14 text-foreground md:pt-16 md:pb-20"
+        className="relative scroll-mt-24 overflow-hidden rounded-[2rem] bg-muted px-4 pt-10 pb-14 text-foreground md:rounded-[3rem] md:pt-16 md:pb-20"
       >
-        <div
-          className="section-glow section-glow--cyan pointer-events-none"
-          style={{ "--glow-x": "16%", "--glow-y": "55%", "--glow-strength": "0.05" } as CSSProperties}
-          aria-hidden
-        />
         <div className="relative mx-auto max-w-7xl">
           <div id="wycena" className="scroll-mt-24">
-            <div className="panel-glass rounded-2xl p-5 md:hidden">
-              <Reveal className="text-center">
-                <p className="section-eyebrow">{SECTION_TITLES.contactEyebrow}</p>
-                <h2 className="mt-1.5 text-2xl font-bold tracking-tight text-white">
-                  {SECTION_TITLES.contactTitle}
-                </h2>
-                <p className="mt-1.5 text-sm leading-relaxed text-white/75">
-                  {SECTION_TITLES.contactSubtitle}
-                </p>
-              </Reveal>
+            <Reveal className="text-center md:hidden">
+              <p className="section-eyebrow">{SECTION_TITLES.contactEyebrow}</p>
+              <h2 className="mt-1.5 text-2xl font-bold tracking-tight text-foreground">
+                {SECTION_TITLES.contactTitle}
+              </h2>
+              <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                {SECTION_TITLES.contactSubtitle}
+              </p>
+            </Reveal>
 
-              <div className="mt-6 flex flex-col gap-3">
-                {contactCards.map((c, i) => (
-                  <ContactCard key={c.title} c={c} index={i} />
-                ))}
-              </div>
-
-              {SECTIONS.contactForm ? (
-                <>
-                  <div className="mx-6 my-6 flex items-center gap-3" aria-hidden>
-                    <span className="h-px flex-1 bg-white/12" />
-                    <span className="text-xs font-medium uppercase tracking-wide text-white/45">lub</span>
-                    <span className="h-px flex-1 bg-white/12" />
-                  </div>
-
-                  <Reveal delay={80}>
-                    <div className="rounded-2xl border border-white/[0.06] bg-white/[0.04] p-5 backdrop-blur-[10px]">
-                      <p className="text-center text-base font-semibold text-white">{SECTION_TITLES.formHeadline}</p>
-                      <p className="mt-1 text-center text-xs text-white/60">{SECTION_TITLES.formSubline}</p>
-                      <div className="mt-3.5 [&_form]:text-left">
-                        <LeadForm idPrefix="contact-mobile" collapseExtras />
-                      </div>
-                    </div>
-                  </Reveal>
-                </>
-              ) : null}
+            <div className="mt-6 flex flex-col gap-3 md:hidden">
+              {contactCards.map((c, i) => (
+                <ContactCard key={c.title} c={c} index={i} />
+              ))}
             </div>
 
-            <div className="panel-glass mx-auto hidden max-w-[60rem] rounded-2xl p-5 md:block md:p-8 lg:p-10">
+            {SECTIONS.contactForm ? (
+              <>
+                <div className="mx-6 my-6 flex items-center gap-3 md:hidden" aria-hidden>
+                  <span className="h-px flex-1 bg-[#cbd5e1]" />
+                  <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">lub</span>
+                  <span className="h-px flex-1 bg-[#cbd5e1]" />
+                </div>
+
+                <Reveal delay={80} className="md:hidden">
+                  <div className="rounded-[1.5rem] bg-white p-5 shadow-sm">
+                    <p className="text-center text-base font-semibold text-foreground">{SECTION_TITLES.formHeadline}</p>
+                    <p className="mt-1 text-center text-xs text-muted-foreground">{SECTION_TITLES.formSubline}</p>
+                    <div className="mt-3.5 [&_form]:text-left">
+                      <LeadForm idPrefix="contact-mobile" collapseExtras />
+                    </div>
+                  </div>
+                </Reveal>
+              </>
+            ) : null}
+
+            <div className="mx-auto hidden max-w-[60rem] md:block">
               <Reveal className="text-center">
                 <p className="section-eyebrow">{SECTION_TITLES.contactEyebrow}</p>
-                <h2 className="mt-1.5 text-4xl font-bold tracking-tight text-white lg:text-[2.75rem]">
+                <h2 className="mt-1.5 text-4xl font-bold tracking-tight text-foreground lg:text-[2.75rem]">
                   {SECTION_TITLES.contactTitle}
                 </h2>
-                <p className="mt-1.5 text-base leading-relaxed text-white/75 lg:text-lg">
+                <p className="mt-1.5 text-base leading-relaxed text-muted-foreground lg:text-lg">
                   {SECTION_TITLES.contactSubtitle}
                 </p>
               </Reveal>
 
               {SECTIONS.contactForm ? (
-                <div className="mx-auto mt-8 grid w-full md:grid-cols-[minmax(0,30rem)_minmax(0,24rem)] md:items-start md:justify-center md:gap-7 lg:mt-10 lg:gap-8">
-                  <Reveal className="w-full text-left">
-                    <div className="flex w-full flex-col rounded-2xl border border-white/[0.08] bg-white/[0.04] p-5 backdrop-blur-[10px] md:p-6">
-                      <p className="text-sm font-semibold text-white">Nie możesz się skontaktować?</p>
-                      <p className="mt-1 text-xs text-white/75">
+                <div className="mx-auto mt-8 grid w-full md:grid-cols-[minmax(0,30rem)_minmax(0,24rem)] md:items-stretch md:justify-center md:gap-7 lg:mt-10 lg:gap-8">
+                  <Reveal className="flex h-full w-full text-left">
+                    <div className="flex h-full w-full flex-col rounded-[1.5rem] bg-white p-5 shadow-sm md:p-6">
+                      <p className="text-sm font-semibold text-foreground">Nie możesz się skontaktować?</p>
+                      <p className="mt-1 text-xs text-muted-foreground">
                         Zostaw numer, oddzwonimy do Ciebie.
                       </p>
                       <div className="mt-4 flex flex-col">
@@ -1303,9 +1315,9 @@ function Index() {
                     </div>
                   </Reveal>
 
-                  <div className="flex w-full flex-col gap-3.5">
+                  <div className="flex h-full w-full flex-col gap-3.5">
                     {contactCards.map((c, i) => (
-                      <ContactCard key={c.title} c={c} index={i} />
+                      <ContactCard key={c.title} c={c} index={i} stretch />
                     ))}
                   </div>
                 </div>
@@ -1322,16 +1334,16 @@ function Index() {
       </section>
 
       {/* FOOTER */}
-      <footer className="relative px-4 pt-10 pb-24 text-foreground md:pb-8">
-        <div className="mx-auto max-w-7xl text-center text-sm text-muted-foreground">
-          <p className="font-bold text-foreground">{SITE_NAME} · {FOOTER_TAGLINE}</p>
+      <footer className="relative rounded-t-[2rem] bg-primary px-4 pt-10 pb-24 text-white md:rounded-t-[3rem] md:pb-8">
+        <div className="mx-auto max-w-7xl text-center text-sm text-white/80">
+          <p className="font-bold text-white">{SITE_NAME}</p>
           <p className="mt-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
-            <a href={PHONE_HREF} className="inline-flex items-center gap-1.5 transition-smooth hover:text-foreground">
+            <a href={PHONE_HREF} className="inline-flex items-center gap-1.5 transition-smooth hover:text-white">
               <Phone className="h-3.5 w-3.5" /> {PHONE_DISPLAY}
             </a>
             <a
               href={EMAIL_HREF}
-              className="inline-flex max-w-full items-center gap-1.5 break-all transition-smooth hover:text-foreground"
+              className="inline-flex max-w-full items-center gap-1.5 break-all transition-smooth hover:text-white"
             >
               <Mail className="h-3.5 w-3.5 shrink-0" /> {EMAIL}
             </a>
@@ -1344,11 +1356,11 @@ function Index() {
               <Clock className="h-3.5 w-3.5 shrink-0" /> {HOURS}
             </span>
           </p>
-          <p className="mt-3 text-xs text-white/45">NIP: {NIP}</p>
-          <p className="mt-4 flex flex-col items-center justify-center gap-1 text-xs text-white/45 md:flex-row md:flex-wrap md:gap-x-1 md:gap-y-0">
+          <p className="mt-3 text-xs text-white/65">NIP: {NIP}</p>
+          <p className="mt-4 flex flex-col items-center justify-center gap-1 text-xs text-white/65 md:flex-row md:flex-wrap md:gap-x-1 md:gap-y-0">
             <Link
               to="/polityka-prywatnosci"
-              className="underline underline-offset-2 transition-smooth hover:text-foreground"
+              className="underline underline-offset-2 transition-smooth hover:text-white"
             >
               Polityka Prywatności (RODO)
             </Link>
@@ -1381,6 +1393,7 @@ function Section({
   children,
   glow,
   panel = false,
+  tone = "white",
   className,
 }: {
   id?: string;
@@ -1390,6 +1403,8 @@ function Section({
   children: ReactNode;
   glow?: SectionGlow;
   panel?: boolean;
+  /** Full-bleed section surface — Nordic white / slate-50 alternation */
+  tone?: "white" | "muted";
   className?: string;
 }) {
   const glowStyle = glow
@@ -1405,8 +1420,7 @@ function Section({
       {eyebrow && <p className="section-eyebrow">{eyebrow}</p>}
       <h2
         className={cn(
-          "text-2xl font-bold tracking-tight md:text-4xl lg:text-[2.75rem]",
-          panel ? "text-white" : "text-foreground",
+          "text-2xl font-bold tracking-tight text-foreground md:text-4xl lg:text-[2.75rem]",
           eyebrow && "mt-1.5",
         )}
       >
@@ -1415,8 +1429,7 @@ function Section({
       {subtitle && (
         <p
           className={cn(
-            "text-sm leading-relaxed md:text-base lg:text-lg",
-            panel ? "text-white/75" : "text-muted-foreground",
+            "text-sm leading-relaxed text-muted-foreground md:text-base lg:text-lg",
             eyebrow ? "mt-1.5" : "mt-2",
           )}
         >
@@ -1431,6 +1444,9 @@ function Section({
       id={id}
       className={cn(
         "relative scroll-mt-24 overflow-hidden px-4 pt-10 pb-14 text-foreground md:pt-16 md:pb-20",
+        tone === "muted"
+          ? "rounded-[2rem] bg-muted md:rounded-[3rem]"
+          : "bg-white",
         className,
       )}
     >
@@ -1447,7 +1463,7 @@ function Section({
       )}
       <div className="relative mx-auto max-w-7xl">
         {panel ? (
-          <div className="panel-glass rounded-2xl p-5 text-center md:p-8 lg:p-10">
+          <div className="panel-glass rounded-[2rem] p-5 text-center md:p-8 lg:p-10">
             {header}
             {children}
           </div>

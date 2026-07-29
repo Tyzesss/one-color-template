@@ -5,10 +5,9 @@ interface MobileCarouselProps<T> {
   items: T[];
   renderItem: (item: T, idx: number) => ReactNode;
   className?: string;
-  dark?: boolean;
 }
 
-export function MobileCarousel<T>({ items, renderItem, className, dark = false }: MobileCarouselProps<T>) {
+export function MobileCarousel<T>({ items, renderItem, className }: MobileCarouselProps<T>) {
   const N = items.length;
   const extended = [items[N - 1], ...items, items[0]];
   const [index, setIndex] = useState(1);
@@ -75,12 +74,8 @@ export function MobileCarousel<T>({ items, renderItem, className, dark = false }
               onClick={() => setIndex(idx + 1)}
               className={cn(
                 isActive
-                  ? dark
-                    ? "h-1.5 w-8 rounded-full bg-brand-cyan transition-all duration-300"
-                    : "h-1.5 w-8 rounded-full bg-accent transition-all duration-300"
-                  : dark
-                    ? "h-1.5 w-1.5 rounded-full bg-white/25"
-                    : "h-1.5 w-1.5 rounded-full bg-muted-foreground/30",
+                  ? "h-1.5 w-8 rounded-full bg-primary transition-all duration-300"
+                  : "h-1.5 w-1.5 rounded-full bg-muted-foreground/30",
               )}
             />
           );

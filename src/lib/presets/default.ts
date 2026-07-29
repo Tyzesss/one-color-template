@@ -137,8 +137,8 @@ export const defaultPreset = withPresetDefaults({
       relativeTime: "6 mies. temu",
     },
   ],
-  heroHeadline: "Montaż i serwis instalacji grzewczych",
-  heroHeadlineMobileLines: ["Montaż i serwis", "instalacji grzewczych"],
+  heroHeadline: "Montaż i serwis instalacji sanitarnych",
+  heroHeadlineMobileLines: ["Montaż i serwis", "instalacji sanitarnych"],
   heroBullets: [
     "Pompy ciepła, rekuperacja, klimatyzacja i kotły.",
     "Zakres i wycena ustalane przed rozpoczęciem prac.",

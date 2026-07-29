@@ -58,15 +58,15 @@ function GoogleReviewCard({
     <article
       ref={ref}
       className={cn(
-        "card-glass flex h-full flex-col rounded-xl p-6 text-left transition-smooth md:hover:-translate-y-0.5 md:hover:border-brand-cyan/25 md:hover:shadow-glow",
+        "card-glass flex h-full flex-col rounded-[1.5rem] border border-[#f1f5f9] p-6 text-left shadow-sm transition-all duration-500 md:hover:-translate-y-1 md:hover:shadow-xl",
         revealClass,
       )}
       style={{ transitionDelay: `${index * 90}ms` }}
     >
       <div className="flex items-center gap-3">
-        <Avatar className="h-11 w-11 ring-1 ring-white/15">
+        <Avatar className="h-11 w-11 ring-1 ring-border">
           {review.authorPhotoUrl ? <AvatarImage src={review.authorPhotoUrl} alt="" /> : null}
-          <AvatarFallback className="bg-white/10 text-sm font-semibold text-foreground">
+          <AvatarFallback className="bg-muted text-sm font-semibold text-foreground">
             {isNamedUser ? authorInitials(review.authorName) : <GoogleIcon className="h-5 w-5" />}
           </AvatarFallback>
         </Avatar>
@@ -93,7 +93,7 @@ function GoogleReviewCard({
         href={verifyUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-4 inline-flex items-center gap-1.5 text-xs font-medium text-brand-cyan transition-smooth hover:text-foreground"
+        className="mt-4 inline-flex items-center gap-1.5 text-xs font-medium text-primary transition-smooth hover:text-brand-navy"
       >
         Zobacz na Google Maps
         <ExternalLink className="h-3.5 w-3.5" />
@@ -111,19 +111,18 @@ export function GoogleReviewsSection({ data }: GoogleReviewsSectionProps) {
           href={profileUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="card-glass inline-flex items-center gap-2.5 rounded-full px-4 py-2 transition-smooth md:hover:-translate-y-0.5 md:hover:border-brand-cyan/25 md:hover:shadow-glow"
+          className="card-glass inline-flex items-center gap-2 rounded-full px-3 py-1.5 transition-smooth"
         >
           <div className="flex items-center gap-0.5" aria-hidden>
             {Array.from({ length: 5 }).map((_, i) => (
-              <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
+              <Star key={i} className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
             ))}
           </div>
-          <span className="text-lg font-bold text-foreground">{rating.toFixed(1)} / 5</span>
+          <span className="text-sm font-bold text-foreground">{rating.toFixed(1)} / 5</span>
         </a>
       </Reveal>
 
       <MobileCarousel
-        dark
         items={reviews}
         renderItem={(review, idx) => (
           <GoogleReviewCard key={review.id} review={review} profileUrl={profileUrl} index={idx} />

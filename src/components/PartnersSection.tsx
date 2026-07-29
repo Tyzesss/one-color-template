@@ -10,7 +10,7 @@ export function PartnersSection() {
   return (
     <Reveal className="relative z-10 py-1 md:px-4 md:py-0 md:pb-8">
       <div className="mx-auto max-w-7xl text-center">
-        <p className="text-xs font-medium uppercase tracking-wide text-white/55 md:text-sm">
+        <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground md:text-sm">
           Autoryzowany partner
         </p>
 
@@ -26,7 +26,7 @@ export function PartnersSection() {
         </div>
 
         {/* Desktop: unchanged middot line */}
-        <p className="mx-auto mt-2 hidden max-w-4xl text-sm font-medium text-white/80 md:block md:text-base lg:text-lg">
+        <p className="mx-auto mt-2 hidden max-w-4xl text-sm font-medium text-muted-foreground md:block md:text-base lg:text-lg">
           {PARTNERS.join(" · ")}
         </p>
       </div>

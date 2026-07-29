@@ -31,16 +31,15 @@ export const Route = createFileRoute("/polityka-prywatnosci")({
 function PolitykaPrywatnosci() {
   return (
     <div className="page-shell relative min-h-screen">
-      <div className="page-ambient-scatter" aria-hidden />
       <div className="page-content">
-      <header className="border-b border-white/10 bg-background/80 backdrop-blur-xl">
+      <header className="border-b border-border bg-card">
         <div className="mx-auto flex h-16 max-w-3xl items-center justify-between px-4 md:h-20">
           <Link to="/" className="flex items-center gap-2 font-bold text-foreground">
             <SiteLogo imageClassName="h-11 max-w-[220px] md:h-14 md:max-w-[340px]" />
           </Link>
           <Link
             to="/"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-smooth hover:text-brand-cyan"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-smooth hover:text-primary"
           >
             <ArrowLeft className="h-4 w-4" />
             Strona główna
@@ -65,7 +64,7 @@ function PolitykaPrywatnosci() {
                   : ","}{" "}
               NIP: {NIP}, REGON: {REGON}. W sprawach
               związanych z ochroną danych można kontaktować się pod adresem e-mail:{" "}
-              <a href={`mailto:${EMAIL}`} className="text-brand-cyan underline hover:text-foreground">
+              <a href={`mailto:${EMAIL}`} className="text-primary underline hover:text-foreground">
                 {EMAIL}
               </a>{" "}
               lub telefonicznie: {PHONE_DISPLAY}.

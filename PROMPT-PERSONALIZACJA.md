@@ -5,6 +5,7 @@ Skopiuj poniższy blok do Cursora (lub użyj `@PROMPT-PERSONALIZACJA.md` + linki
 ---
 
 Przeanalizuj treść, strukturę, kolorystykę i zasoby z:
+
 - **Strona klienta:** [URL STRONY KLIENTA]
 - **Google Maps:** [URL MAPY]
 
@@ -22,37 +23,37 @@ Zrób rebrand mojego **szablonu graficznego HVAC** (TanStack Start, `src/lib/pre
 
 Potem sprawdź **spójność oferty** — wszystkie pola muszą mówić o tym samym profilu:
 
-| `heroHeadline` | `heroBullets` | `services[]` | `faqs[]` | `serviceOptionGroups[]` | `footerTagline` | `siteTitle` |
-|----------------|---------------|--------------|----------|-------------------------|-----------------|-------------|
-| ten sam profil | ten sam profil | ten sam profil | ten sam profil | ten sam profil | ten sam profil | ten sam profil |
+| `heroHeadline` | `heroBullets`  | `services[]`   | `faqs[]`       | `serviceOptionGroups[]` | `footerTagline` | `siteTitle`    |
+| -------------- | -------------- | -------------- | -------------- | ----------------------- | --------------- | -------------- |
+| ten sam profil | ten sam profil | ten sam profil | ten sam profil | ten sam profil          | ten sam profil  | ten sam profil |
 
 Jeśli H1 mówi o klimie, a FAQ o kotłach → **popraw przed buildem**.
 
 ### Źródło prawdy przy rozjazdach (stara strona vs Maps)
 
-| Dane | Priorytet |
-|------|-----------|
-| Telefon, godziny, adres, nazwa firmy, NIP | **Google Maps** (gdy rozjazd ze starą stroną) |
-| Oferta, marki, zdjęcia realizacji, ceny | **stara strona klienta** |
-| Ocena Google, liczba opinii, treść recenzji | **tylko Google Maps** |
-| E-mail | strona klienta; jeśli brak — Maps lub footer starej strony |
+| Dane                                        | Priorytet                                                  |
+| ------------------------------------------- | ---------------------------------------------------------- |
+| Telefon, godziny, adres, nazwa firmy, NIP   | **Google Maps** (gdy rozjazd ze starą stroną)              |
+| Oferta, marki, zdjęcia realizacji, ceny     | **stara strona klienta**                                   |
+| Ocena Google, liczba opinii, treść recenzji | **tylko Google Maps**                                      |
+| E-mail                                      | strona klienta; jeśli brak — Maps lub footer starej strony |
 
 ### Co wyciągnąć ze starej strony
 
-| **Bierz** | **Nie bierz** |
-|-----------|---------------|
-| lista usług, marki, ceny (jeśli publiczne) | slogany, hasła marketingowe |
-| zdjęcia realizacji / montaży | lista wielu miast w hero |
-| NIP/REGON (weryfikuj z Maps) | długie „o nas” z lat 90. |
-| fakty: autoryzacja, lata działalności | „najlepsi”, „liderzy”, „komfort przede wszystkim” |
+| **Bierz**                                  | **Nie bierz**                                     |
+| ------------------------------------------ | ------------------------------------------------- |
+| lista usług, marki, ceny (jeśli publiczne) | slogany, hasła marketingowe                       |
+| zdjęcia realizacji / montaży               | lista wielu miast w hero                          |
+| NIP/REGON (weryfikuj z Maps)               | długie „o nas” z lat 90.                          |
+| fakty: autoryzacja, lata działalności      | „najlepsi”, „liderzy”, „komfort przede wszystkim” |
 
 ### Geografia — jedno miasto
 
-| Źle | Dobrze |
-|-----|--------|
-| `siteCity`: „Katowice, Chorzów, Sosnowiec i okolice” | `siteCity`: „Katowice i okolice” |
-| `serviceArea` z całym województwem | jedno miasto + „dojazd do klienta” |
-| `cityLocative` zgadywane | sprawdź odmianę: „w Krakowie”, „w Gdańsku”, „w Łodzi” |
+| Źle                                                  | Dobrze                                                |
+| ---------------------------------------------------- | ----------------------------------------------------- |
+| `siteCity`: „Katowice, Chorzów, Sosnowiec i okolice” | `siteCity`: „Katowice i okolice”                      |
+| `serviceArea` z całym województwem                   | jedno miasto + „dojazd do klienta”                    |
+| `cityLocative` zgadywane                             | sprawdź odmianę: „w Krakowie”, „w Gdańsku”, „w Łodzi” |
 
 ### `siteName` vs `companyLegalName`
 
@@ -109,16 +110,16 @@ Przed pisaniem presetu przeanalizuj stronę klienta i Maps: **co sprzedaje w pie
 
 **Na pewno dopasuj do priorytetów firmy:**
 
-| Pole presetu | Zasada |
-|--------------|--------|
-| `heroHeadline` (H1) | Główna usługa firmy, 1 krótka linia. Np. firma od klimy → „Montaż i serwis klimatyzacji”; od kotłów → „Serwis i naprawa kotłów”; mix HVAC → „Montaż i serwis instalacji HVAC”. **Nie zostawiaj domyślnego H1**, jeśli nie pasuje. |
-| `heroBullets` | 2 punkty = **dwa najważniejsze atuty/oferty** klienta (krótko). Kolejność = priorytet. Nie kopiuj marketingu ze starej strony — wyciągnij fakty. |
-| `services[]` | 4–6 kart = **rzeczywista oferta**, od najważniejszej. Tytuł + 1 zdanie. Jeśli klient nie montuje kotłów — usuń. Jeśli robi tylko klimę — 4–6 usług klimatyzacyjnych. |
-| `servicesSectionSubtitle` | Jedno zdanie podsumowujące zakres (dopasuj do firmy). |
-| `serviceOptionGroups[]` | Opcje formularza = to, co klient faktycznie przyjmuje w zgłoszeniach. |
-| `faqs[]` | **5 pytań pod profil branżowy firmy** (klima / pompy / kotły / wentylacja / mix). Nie zostawiaj FAQ z `default.ts`, jeśli firma robi coś innego. |
-| `partners[]` | Tylko marki, którymi firma się chwali (lub `[]`). |
-| `footerTagline` | Krótki opis głównego profilu (np. „Klimatyzacja i pompy ciepła”). |
+| Pole presetu              | Zasada                                                                                                                                                                                                                            |
+| ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `heroHeadline` (H1)       | Główna usługa firmy, 1 krótka linia. Np. firma od klimy → „Montaż i serwis klimatyzacji”; od kotłów → „Serwis i naprawa kotłów”; mix HVAC → „Montaż i serwis instalacji HVAC”. **Nie zostawiaj domyślnego H1**, jeśli nie pasuje. |
+| `heroBullets`             | 2 punkty = **dwa najważniejsze atuty/oferty** klienta (krótko). Kolejność = priorytet. Nie kopiuj marketingu ze starej strony — wyciągnij fakty.                                                                                  |
+| `services[]`              | 4–6 kart = **rzeczywista oferta**, od najważniejszej. Tytuł + 1 zdanie. Jeśli klient nie montuje kotłów — usuń. Jeśli robi tylko klimę — 4–6 usług klimatyzacyjnych.                                                              |
+| `servicesSectionSubtitle` | Jedno zdanie podsumowujące zakres (dopasuj do firmy).                                                                                                                                                                             |
+| `serviceOptionGroups[]`   | Opcje formularza = to, co klient faktycznie przyjmuje w zgłoszeniach.                                                                                                                                                             |
+| `faqs[]`                  | **5 pytań pod profil branżowy firmy** (klima / pompy / kotły / wentylacja / mix). Nie zostawiaj FAQ z `default.ts`, jeśli firma robi coś innego.                                                                                  |
+| `partners[]`              | Tylko marki, którymi firma się chwali (lub `[]`).                                                                                                                                                                                 |
+| `footerTagline`           | Krótki opis głównego profilu (np. „Klimatyzacja i pompy ciepła”).                                                                                                                                                                 |
 
 **Szablon ≠ stara strona klienta.** Nie wklejaj sloganów. **Ale H1, bullety i usługi MUSZĄ odzwierciedlać to, czym firma żyje** — inaczej podgląd free value jest mylący.
 
@@ -132,17 +133,18 @@ Przed pisaniem presetu przeanalizuj stronę klienta i Maps: **co sprzedaje w pie
 
 Wszystko idzie przez preset → `src/lib/site.ts` → komponenty. **Nie hardcoduj** danych w `site.ts`, `index.tsx`, `schema.ts`.
 
-| Plik | Kiedy edytować |
-|------|----------------|
-| `src/lib/presets/[klient].ts` | Zawsze — główna personalizacja (dane + `sections`, `sectionTitles`, `howItWorksSteps`, `brandColors`) |
-| `src/styles.css` | Kolory marki (gdy brak `brandColors` w presecie) |
-| `public/logo.*`, `public/gallery/*`, `public/favicon.*` | Logo, zdjęcia, favicon |
-| `src/lib/presets/types.ts` + `index.tsx` (`SERVICE_ICONS`) | Tylko gdy potrzebujesz nowej ikony usługi |
-| `src/components/HowItWorks.tsx` | Rzadko — kroki są w presecie (`howItWorksSteps`) |
-| `src/routes/index.tsx` | **Nie edytuj** przy personalizacji |
-| `src/routes/__root.tsx` | Tylko `theme-color` w meta, jeśli zmieniasz ciemny akcent |
+| Plik                                                       | Kiedy edytować                                                                                        |
+| ---------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `src/lib/presets/[klient].ts`                              | Zawsze — główna personalizacja (dane + `sections`, `sectionTitles`, `howItWorksSteps`, `brandColors`) |
+| `src/styles.css`                                           | Kolory marki (gdy brak `brandColors` w presecie)                                                      |
+| `public/logo.*`, `public/gallery/*`, `public/favicon.*`    | Logo, zdjęcia, favicon                                                                                |
+| `src/lib/presets/types.ts` + `index.tsx` (`SERVICE_ICONS`) | Tylko gdy potrzebujesz nowej ikony usługi                                                             |
+| `src/components/HowItWorks.tsx`                            | Rzadko — kroki są w presecie (`howItWorksSteps`)                                                      |
+| `src/routes/index.tsx`                                     | **Nie edytuj** przy personalizacji                                                                    |
+| `src/routes/__root.tsx`                                    | Tylko `theme-color` w meta, jeśli zmieniasz ciemny akcent                                             |
 
 Ustaw w `.env` / `.env.example`:
+
 - `VITE_SITE_PRESET=[id-klienta]`
 - `VITE_SITE_URL=[domena podglądu lub docelowa]`
 
@@ -163,6 +165,7 @@ Na koniec: `npm run build` — musi przejść bez błędów.
 W treściach **widocznych na stronie** (preset: H1, bullety, usługi, FAQ, `serviceArea`, `alt` galerii, podtytuły sekcji) **nie nadużywaj znaku „—”**. Na stronie wygląda to sztucznie i źle.
 
 **Zamiast „—” używaj:**
+
 - przecinka: „Kraków i okolice, dojazd do klienta”
 - kropki i dwóch zdań: „Montaż i serwis. Dojazd do klienta.”
 - dwukropka, gdy pasuje: „Zakres: przeglądy, naprawy, montaż”
@@ -194,15 +197,16 @@ To samo w meta SEO i opisach usług — rzadko max 1 na cały preset, a najlepie
 
 **Przykłady H1 (wybierz profil klienta, nie kopiuj ślepo):**
 
-| Profil firmy | Przykład H1 |
-|--------------|-------------|
-| Klimatyzacja | Montaż i serwis klimatyzacji |
-| Pompy ciepła | Montaż i serwis pomp ciepła |
-| Kotły / ogrzewanie | Serwis i naprawa kotłów |
-| Mix HVAC | Montaż i serwis instalacji HVAC |
-| Serwis awaryjny | Serwis awaryjny klimatyzacji i HVAC |
+| Profil firmy       | Przykład H1                         |
+| ------------------ | ----------------------------------- |
+| Klimatyzacja       | Montaż i serwis klimatyzacji        |
+| Pompy ciepła       | Montaż i serwis pomp ciepła         |
+| Kotły / ogrzewanie | Serwis i naprawa kotłów             |
+| Mix HVAC           | Montaż i serwis instalacji HVAC     |
+| Serwis awaryjny    | Serwis awaryjny klimatyzacji i HVAC |
 
 **Subtitles sekcji (preset — dopasuj do oferty):**
+
 - `servicesSectionSubtitle`
 - `gallerySectionSubtitle`
 
@@ -217,29 +221,29 @@ Personalizuj tam, gdzie lead **widzi markę i ofertę**: kolory, logo, zdjęcia,
 1. `npm run new-preset [id]` (np. `termo-katowice`) **lub** skopiuj `default.ts` / `vertical-*.ts` → `src/lib/presets/[id].ts`
 2. Uzupełnij wszystkie pola:
 
-| Pole | Zasada |
-|------|--------|
-| `id` | kebab-case, np. `termo-katowice` |
-| `siteName` | Krótka nazwa marki |
-| `companyLegalName` | Pełna nazwa (RODO, schema.org) |
-| `siteCity` | „[Miasto] i okolice” |
-| `cityLocative` | „w [Mieście]” (odmiana) |
-| `phoneDisplay` / `phoneE164` | Prawdziwy telefon (+48…) |
-| `email` | Prawdziwy e-mail |
-| `nip` / `regon` | Z wizytówki / strony / Maps |
-| `hours` | Godziny otwarcia |
-| `serviceArea` | Gdy **brak adresu**: „[Miasto] i okolice, dojazd do klienta” (fallback w Kontakt) |
+| Pole                                                           | Zasada                                                                                                                      |
+| -------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `id`                                                           | kebab-case, np. `termo-katowice`                                                                                            |
+| `siteName`                                                     | Krótka nazwa marki                                                                                                          |
+| `companyLegalName`                                             | Pełna nazwa (RODO, schema.org)                                                                                              |
+| `siteCity`                                                     | „[Miasto] i okolice”                                                                                                        |
+| `cityLocative`                                                 | „w [Mieście]” (odmiana)                                                                                                     |
+| `phoneDisplay` / `phoneE164`                                   | Prawdziwy telefon (+48…)                                                                                                    |
+| `email`                                                        | Prawdziwy e-mail                                                                                                            |
+| `nip` / `regon`                                                | Z wizytówki / strony / Maps                                                                                                 |
+| `hours`                                                        | Godziny otwarcia                                                                                                            |
+| `serviceArea`                                                  | Gdy **brak adresu**: „[Miasto] i okolice, dojazd do klienta” (fallback w Kontakt)                                           |
 | `address` / `addressStreet*` / `addressCity` / `addressPostal` | **Priorytet w sekcji Kontakt** — gdy wypełnione, karta pokazuje „Adres”; bez adresu → `serviceArea` jako „Obszar działania” |
-| `mapsUrl` / `googleReviewsUrl` | Link z Google Maps |
-| `mapsQuery` | Fraza do wyszukania firmy |
-| `siteDefaultUrl` | Domena klienta (lub obecna strona) |
-| `siteTitle` | SEO: np. „Serwis kotłów [Miasto] \| [Nazwa]” lub „Klimatyzacja [Miasto] – montaż i serwis \| [Nazwa]” |
-| `siteDescription` / `siteKeywords` | Meta — niewidoczne w hero |
-| `footerTagline` | Krótko, np. „Serwis kotłów i pomp ciepła” |
-| `partners` | Marki klienta — puste `[]` jeśli brak |
-| `logoUrl` | Ścieżka do logo w `public/` |
-| `logoIncludesName` | `true` = logo ma napis (nie duplikuj `siteName`); `false` = tylko ikona (nazwa obok — domyślnie) |
-| `faviconUrl` | Kwadratowy favicon z logo; np. `"/favicon.png"` |
+| `mapsUrl` / `googleReviewsUrl`                                 | Link z Google Maps                                                                                                          |
+| `mapsQuery`                                                    | Fraza do wyszukania firmy                                                                                                   |
+| `siteDefaultUrl`                                               | Domena klienta (lub obecna strona)                                                                                          |
+| `siteTitle`                                                    | SEO: np. „Serwis kotłów [Miasto] \| [Nazwa]” lub „Klimatyzacja [Miasto] – montaż i serwis \| [Nazwa]”                       |
+| `siteDescription` / `siteKeywords`                             | Meta — niewidoczne w hero                                                                                                   |
+| `footerTagline`                                                | Krótko, np. „Serwis kotłów i pomp ciepła”                                                                                   |
+| `partners`                                                     | Marki klienta — puste `[]` jeśli brak                                                                                       |
+| `logoUrl`                                                      | Ścieżka do logo w `public/`                                                                                                 |
+| `logoIncludesName`                                             | `true` = logo ma napis (nie duplikuj `siteName`); `false` = tylko ikona (nazwa obok — domyślnie)                            |
+| `faviconUrl`                                                   | Kwadratowy favicon z logo; np. `"/favicon.png"`                                                                             |
 
 3. Zarejestruj w `src/lib/presets/index.ts` i ustaw jako aktywny preset.
 
@@ -248,6 +252,7 @@ Personalizuj tam, gdzie lead **widzi markę i ofertę**: kolory, logo, zdjęcia,
 Zidentyfikuj **główny kolor marki ze logo** (nie z przypadkowych elementów WP).
 
 **Procedura:**
+
 1. Pipeta z **logo na przezroczystym tle** (nie z kolorowego banera reklamowego)
 2. Logo czarno-białe → akcent z przycisku/nagłówka **starej strony**, nie domyślny niebieski szablonu
 3. Po zmianie sprawdź **3 miejsca:** hover CTA, timeline „Jak to działa”, glow tła przy scrollu
@@ -255,12 +260,12 @@ Zidentyfikuj **główny kolor marki ze logo** (nie z przypadkowych elementów WP
 
 Edytuj `src/styles.css` — sekcja `:root`:
 
-| Zmienna | Efekt |
-|---------|-------|
-| `--brand-teal`, `--brand-cyan` | Akcenty, ikony, linki |
-| `--cta`, `--cta-hover` | Przyciski CTA |
-| `--primary`, `--accent`, `--ring` | Ogólna paleta UI |
-| `--gradient-hero`, `--gradient-accent` | Tła hero i gradienty |
+| Zmienna                                | Efekt                 |
+| -------------------------------------- | --------------------- |
+| `--brand-teal`, `--brand-cyan`         | Akcenty, ikony, linki |
+| `--cta`, `--cta-hover`                 | Przyciski CTA         |
+| `--primary`, `--accent`, `--ring`      | Ogólna paleta UI      |
+| `--gradient-hero`, `--gradient-accent` | Tła hero i gradienty  |
 
 **Przeswity (glow):** `.page-ambient-scatter`, `.section-glow`, `--shadow-glow`, `--shadow-cta`, `--shadow-cta-hover` — automatycznie z `--brand-teal` / `--brand-cyan` / `--cta`. Wystarczy zmienić paletę marki; potem sprawdź tło, sekcje i **hover na przyciskach** (CTA, secondary, sticky bar).
 
@@ -294,6 +299,7 @@ Znajdź **bezpośrednie URL-e** zdjęć realizacji/montaży na stronie klienta.
 **Dla produkcji (lepiej):** pobierz do `public/gallery/`, opcjonalnie `node scripts/optimize-gallery.mjs` (JPG→WebP).
 
 W presetcie ustaw:
+
 - `heroImage` — najlepsze zdjęcie (priorytet: z realizacji **klienta**)
 - `ogImage` — ten sam co hero lub najlepsze zdjęcie z galerii
 - `gallery[]` — według reguł poniżej; każda pozycja: `image`, `alt`, `caption`
@@ -308,25 +314,26 @@ W presetcie ustaw:
 
 **Ile wpisać do `gallery[]`:**
 
-| Realizacje u klienta | Co robisz |
-|----------------------|-----------|
-| **0** (brak sensownych zdjęć) | **6 zdjęć** z folderu zapasowego (patrz tabela poniżej) |
-| **1–5** | Wszystkie zdjęcia klienta **+ dopełnienie z zapasowych do 6** łącznie |
-| **6** | Tylko zdjęcia klienta (6 pozycji) |
-| **7+** | **Wstaw wszystkie** realizacje klienta — **nie ucinaj do 6** |
+| Realizacje u klienta          | Co robisz                                                             |
+| ----------------------------- | --------------------------------------------------------------------- |
+| **0** (brak sensownych zdjęć) | **6 zdjęć** z folderu zapasowego (patrz tabela poniżej)               |
+| **1–5**                       | Wszystkie zdjęcia klienta **+ dopełnienie z zapasowych do 6** łącznie |
+| **6**                         | Tylko zdjęcia klienta (6 pozycji)                                     |
+| **7+**                        | **Wstaw wszystkie** realizacje klienta — **nie ucinaj do 6**          |
 
 Przykład: klient ma 2 zdjęcia → 2 jego + 4 zapasowe = 6 w `gallery[]`.  
 Przykład: klient ma 9 zdjęć → wszystkie 9 w `gallery[]`.
 
 **Foldery zapasowe** (tylko do uzupełnienia, gdy brakuje u klienta):
 
-| Profil firmy | Folder |
-|--------------|--------|
-| Klimatyzacja (główny filar) | `C:\Users\Tymek\Desktop\TOOLS\KLIMATYZACJA` |
-| Pompy ciepła, kotły, ogrzewanie (główny filar) | `C:\Users\Tymek\Desktop\TOOLS\POMPY KOTLY` |
-| Mix HVAC | folder **głównego** filaru z kroku zero |
+| Profil firmy                                   | Folder                                      |
+| ---------------------------------------------- | ------------------------------------------- |
+| Klimatyzacja (główny filar)                    | `C:\Users\Tymek\Desktop\TOOLS\KLIMATYZACJA` |
+| Pompy ciepła, kotły, ogrzewanie (główny filar) | `C:\Users\Tymek\Desktop\TOOLS\POMPY KOTLY`  |
+| Mix HVAC                                       | folder **głównego** filaru z kroku zero     |
 
 **Procedura:**
+
 1. Zbierz wszystkie sensowne zdjęcia klienta → policz ile masz
 2. Jeśli <6 → dobierz brakujące z odpowiedniego folderu TOOLS (nie duplikuj tematycznie tych samych ujęć)
 3. Skopiuj pliki do `public/gallery/` (klient + ewentualnie zapasowe)
@@ -342,6 +349,7 @@ Przykład: klient ma 9 zdjęć → wszystkie 9 w `gallery[]`.
 **`services[]`** — 4–6 kart = **priorytetowa oferta klienta** (od najważniejszej). Kolejność = jak na stronie klienta / w menu, nie alfabetycznie.
 
 **Limity copy:**
+
 - **H1:** max ~50 znaków, bez kropki na końcu
 - **Bullet:** max ~80 znaków, zaczyna się od faktu (nie „Jesteśmy…”)
 - **Tytuł usługi:** 3–6 słów, czasownik + obiekt (np. „Montaż klimatyzacji split”)
@@ -349,14 +357,14 @@ Przykład: klient ma 9 zdjęć → wszystkie 9 w `gallery[]`.
 
 **Mapowanie ikon (nie losuj):**
 
-| Typ usługi | Ikona |
-|------------|-------|
-| Montaż, uruchomienie | `check-circle` |
-| Serwis, naprawa | `wrench` |
-| Przeglądy, gwarancja | `shield-check` |
-| Pompy ciepła, rekuperacja | `zap` |
-| Awaria, pilny dojazd | `alert-triangle` |
-| Kotły, ogrzewanie | `flame` |
+| Typ usługi                | Ikona            |
+| ------------------------- | ---------------- |
+| Montaż, uruchomienie      | `check-circle`   |
+| Serwis, naprawa           | `wrench`         |
+| Przeglądy, gwarancja      | `shield-check`   |
+| Pompy ciepła, rekuperacja | `zap`            |
+| Awaria, pilny dojazd      | `alert-triangle` |
+| Kotły, ogrzewanie         | `flame`          |
 
 Każda karta: `{ icon, title, desc }` — `desc` = 1 zdanie.
 
@@ -366,6 +374,7 @@ Każda karta: `{ icon, title, desc }` — `desc` = 1 zdanie.
 `wrench` · `shield-check` · `check-circle` · `zap` · `alert-triangle` · `flame`
 
 Jeśli żadna nie pasuje (np. klimatyzacja → `snowflake`):
+
 1. Dodaj typ w `src/lib/presets/types.ts` → `ServiceIcon`
 2. Dodaj import + mapowanie w `index.tsx` → `SERVICE_ICONS`
 3. Użyj w presetcie
@@ -380,24 +389,26 @@ Jeśli żadna nie pasuje (np. klimatyzacja → `snowflake`):
 
 **Przykłady tematów FAQ wg profilu:**
 
-| Profil firmy | Przykładowe pytania (dostosuj treść) |
-|--------------|--------------------------------------|
-| **Klimatyzacja** | Montaż split/multi-split? · Koszt montażu? · Serwis i odgrzybianie? · Jakie marki? · Czas montażu? |
-| **Pompy ciepła** | Montaż pompy? · Serwis gwarancyjny/pogwarancyjny? · Pierwsze uruchomienie? · Dotacje / formalności (jeśli firma to wspomina)? · Awaria zimą? |
-| **Kotły / ogrzewanie** | Przegląd kotła? · Koszt serwisu? · Autoryzowany serwis marek? · Naprawa awaryjna? · Pierwsze uruchomienie? |
-| **Wentylacja** | Montaż rekuperacji? · Serwis wentylacji? · Dobór mocy? · Przeglądy okresowe? |
-| **Mix HVAC** | Po 1 pytaniu z każdego głównego filaru firmy + dojazd |
+| Profil firmy           | Przykładowe pytania (dostosuj treść)                                                                                                         |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Klimatyzacja**       | Montaż split/multi-split? · Koszt montażu? · Serwis i odgrzybianie? · Jakie marki? · Czas montażu?                                           |
+| **Pompy ciepła**       | Montaż pompy? · Serwis gwarancyjny/pogwarancyjny? · Pierwsze uruchomienie? · Dotacje / formalności (jeśli firma to wspomina)? · Awaria zimą? |
+| **Kotły / ogrzewanie** | Przegląd kotła? · Koszt serwisu? · Autoryzowany serwis marek? · Naprawa awaryjna? · Pierwsze uruchomienie?                                   |
+| **Wentylacja**         | Montaż rekuperacji? · Serwis wentylacji? · Dobór mocy? · Przeglądy okresowe?                                                                 |
+| **Mix HVAC**           | Po 1 pytaniu z każdego głównego filaru firmy + dojazd                                                                                        |
 
 Ton: krótko, konkretnie (jak reszta szablonu). Używaj `siteCity` / `cityLocative` w odpowiedziach o zasięgu.
 
 Ton: krótko, konkretnie (jak reszta szablonu). Używaj `siteCity` / `cityLocative` w odpowiedziach o zasięgu.
 
 **`serviceOptionGroups[]`** — **lustrzane odbicie `services[]`**:
+
 - Grupy = tylko usługi, które firma faktycznie oferuje (usuń całe grupy spoza oferty)
 - Max 4–5 grup, po 2–4 opcje (szybki wybór na mobile)
 - Etykiety grup w mianowniku (Klimatyzacja, Pompy ciepła), opcje konkretne
 
 **`partners[]`:**
+
 - Tylko marki wymienione na stronie klienta / „autoryzowany serwis”
 - Brak dowodu → `[]` (lepiej pusto niż zmyślone marki)
 - Poprawna pisownia (Mitsubishi, Daikin…), max 6–8 pozycji
@@ -416,14 +427,15 @@ Ton: krótko, konkretnie (jak reszta szablonu). Używaj `siteCity` / `cityLocati
 
 W presetcie ustaw:
 
-| Pole | Źródło |
-|------|--------|
-| `googleRating` | Średnia ocena z Google Maps (np. `4.8`) |
+| Pole                | Źródło                                                                                 |
+| ------------------- | -------------------------------------------------------------------------------------- |
+| `googleRating`      | Średnia ocena z Google Maps (np. `4.8`)                                                |
 | `googleReviewCount` | **Łączna liczba opinii z profilu Maps** (np. profil pokazuje „32 opinie” → wpisz `32`) |
-| `googleReviewsUrl` | Link do profilu (= `mapsUrl` lub goo.gl) |
-| `reviews[]` | Min. 3–5 **prawdziwych** opinii z Maps (same teksty do wyświetlenia) |
+| `googleReviewsUrl`  | Link do profilu (= `mapsUrl` lub goo.gl)                                               |
+| `reviews[]`         | Min. 3–5 **prawdziwych** opinii z Maps (same teksty do wyświetlenia)                   |
 
 **KRYTYCZNE — `googleReviewCount` vs `reviews[]`:**
+
 - `googleReviewCount` = **całkowita liczba opinii na Google Maps** (ta przy gwiazdkach na profilu).
 - `reviews[]` = tylko 3–5 skopiowanych recenzji do sekcji na stronie.
 - **NIGDY** nie ustawiaj `googleReviewCount` na długość `reviews[]` (np. 5 wpisów ≠ 5 opinii na Maps).
@@ -431,6 +443,7 @@ W presetcie ustaw:
 - Hero, sekcja „Opinie klientów” i JSON-LD pokazują `googleReviewCount` — musi zgadzać się z Maps co do liczby.
 
 **Zasady `reviews[]`:**
+
 - Wybierz 3–5 opinii, które **wspominają główną usługę** firmy (u firmy od klimy opinia o klimie)
 - Mix: montaż + serwis + szybka reakcja; `relativeTime` zgodne z Maps (nie wymyślaj)
 - `name`: inicjały z Maps lub pomiń → „Użytkownik Google Maps”
@@ -467,6 +480,7 @@ npm run build
 ### Raport końcowy (wypisz przed oddaniem)
 
 Krótko podsumuj:
+
 - Profil firmy (1 zdanie)
 - Skąd wzięto telefon i NIP (Maps / strona)
 - `googleReviewCount` z Maps

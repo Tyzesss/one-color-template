@@ -46,7 +46,11 @@ export function MobileCarousel<T>({ items, renderItem, className }: MobileCarous
 
   return (
     <div className={cn("block md:hidden", className)}>
-      <div className="overflow-hidden touch-pan-y" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
+      <div
+        className="overflow-hidden touch-pan-y"
+        onTouchStart={onTouchStart}
+        onTouchEnd={onTouchEnd}
+      >
         <div
           ref={trackRef}
           className="flex"
@@ -57,10 +61,10 @@ export function MobileCarousel<T>({ items, renderItem, className }: MobileCarous
           onTransitionEnd={handleTransitionEnd}
         >
           {extended.map((item, idx) => (
-              <div key={idx} className="w-full flex-shrink-0 px-1">
-                {renderItem(item, idx)}
-              </div>
-            ))}
+            <div key={idx} className="w-full flex-shrink-0 px-1">
+              {renderItem(item, idx)}
+            </div>
+          ))}
         </div>
       </div>
       <div className="mt-4 flex items-center justify-center gap-1.5">

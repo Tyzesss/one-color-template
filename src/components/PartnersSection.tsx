@@ -18,7 +18,11 @@ export function PartnersSection() {
         <div className="partners-marquee mt-5 md:hidden" aria-label={PARTNERS.join(", ")}>
           <ul className="partners-marquee__track">
             {mobileStrip.map((partner, i) => (
-              <li key={`${partner}-${i}`} className="partners-marquee__item" aria-hidden={i >= PARTNERS.length}>
+              <li
+                key={`${partner}-${i}`}
+                className="partners-marquee__item"
+                aria-hidden={i >= PARTNERS.length}
+              >
                 {partner}
               </li>
             ))}

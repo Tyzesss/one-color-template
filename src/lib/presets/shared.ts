@@ -1,9 +1,4 @@
-import type {
-  HowItWorksStep,
-  SectionConfig,
-  SectionTitles,
-  SitePreset,
-} from "./types";
+import type { HowItWorksStep, SectionConfig, SectionTitles, SitePreset } from "./types";
 
 export const DEFAULT_SECTIONS: SectionConfig = {
   partners: true,
@@ -60,38 +55,23 @@ export const DEFAULT_HOW_IT_WORKS_STEPS: HowItWorksStep[] = [
   },
 ];
 
-export const DEFAULT_WHATSAPP_MESSAGE =
-  "Dzień dobry, chciałbym zgłosić zlecenie serwisowe.";
+export const DEFAULT_WHATSAPP_MESSAGE = "Dzień dobry, chciałbym zgłosić zlecenie serwisowe.";
 
 type PresetInput = Omit<
   SitePreset,
-  | "sections"
-  | "sectionTitles"
-  | "howItWorksSteps"
-  | "whatsappPrefillMessage"
-  | "schemaType"
+  "sections" | "sectionTitles" | "howItWorksSteps" | "whatsappPrefillMessage" | "schemaType"
 > &
   Partial<
     Pick<
       SitePreset,
-      | "sections"
-      | "sectionTitles"
-      | "howItWorksSteps"
-      | "whatsappPrefillMessage"
-      | "schemaType"
+      "sections" | "sectionTitles" | "howItWorksSteps" | "whatsappPrefillMessage" | "schemaType"
     >
   >;
 
 /** Scala domyślne pola konfiguracyjne matki z danymi presetu klienta. */
 export function withPresetDefaults(preset: PresetInput): SitePreset {
-  const {
-    sections,
-    sectionTitles,
-    howItWorksSteps,
-    whatsappPrefillMessage,
-    schemaType,
-    ...rest
-  } = preset;
+  const { sections, sectionTitles, howItWorksSteps, whatsappPrefillMessage, schemaType, ...rest } =
+    preset;
 
   return {
     ...rest,

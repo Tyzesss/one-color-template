@@ -4,11 +4,11 @@ Ten dokument opisuje krok po kroku, jak z szablonu zrobić stronę dla nowego kl
 
 ## Filozofia szablonu
 
-| Szablon dostarcza | Ty dopasowujesz do klienta |
-|-------------------|----------------------------|
-| Układ strony, UX, premium dark | Kolory marki, logo, favicon, zdjęcia |
-| Struktura sekcji, formularze, sticky bar | Telefon, adres, NIP, Maps, opinie Google |
-| Ton copy (krótko, konkretnie) | **H1, bullety hero, usługi, FAQ, formularz** |
+| Szablon dostarcza                        | Ty dopasowujesz do klienta                   |
+| ---------------------------------------- | -------------------------------------------- |
+| Układ strony, UX, premium dark           | Kolory marki, logo, favicon, zdjęcia         |
+| Struktura sekcji, formularze, sticky bar | Telefon, adres, NIP, Maps, opinie Google     |
+| Ton copy (krótko, konkretnie)            | **H1, bullety hero, usługi, FAQ, formularz** |
 
 **Szablon to głównie szata graficzna.** Domyślny preset (`default.ts`) to przykład ogólnego HVAC — przy każdym kliencie **H1, `heroBullets` i `services[]` muszą być zgodne z priorytetami firmy** (co sprzedaje na pierwszym planie na jej stronie / Maps). Nie zostawiaj domyślnego copy, jeśli klient robi np. tylko klimatyzację.
 
@@ -28,11 +28,11 @@ Zanim skopiujesz `default.ts`, ustal profil firmy:
 
 ### Źródło prawdy (rozjazd strona vs Maps)
 
-| Dane | Priorytet |
-|------|-----------|
-| Telefon, godziny, adres, NIP | **Google Maps** |
+| Dane                         | Priorytet        |
+| ---------------------------- | ---------------- |
+| Telefon, godziny, adres, NIP | **Google Maps**  |
 | Oferta, marki, zdjęcia, ceny | **stara strona** |
-| Ocena i liczba opinii | **tylko Maps** |
+| Ocena i liczba opinii        | **tylko Maps**   |
 
 ### Co brać ze starej strony
 
@@ -63,12 +63,12 @@ Potem edytuj `src/lib/presets/firma-krakow.ts` i ustaw `VITE_SITE_PRESET=firma-k
 
 Zamiast `default.ts` możesz skopiować gotowy wzorzec:
 
-| Plik | Profil |
-|------|--------|
-| `vertical-klimatyzacja.ts` | Klimatyzacja |
-| `vertical-pompy-ciepla.ts` | Pompy ciepła |
-| `vertical-kotly.ts` | Kotły i ogrzewanie |
-| `vertical-mix-hvac.ts` | Mix HVAC |
+| Plik                       | Profil             |
+| -------------------------- | ------------------ |
+| `vertical-klimatyzacja.ts` | Klimatyzacja       |
+| `vertical-pompy-ciepla.ts` | Pompy ciepła       |
+| `vertical-kotly.ts`        | Kotły i ogrzewanie |
+| `vertical-mix-hvac.ts`     | Mix HVAC           |
 
 ## Krok 1 — Nowy preset klienta
 
@@ -78,65 +78,66 @@ Zamiast `default.ts` możesz skopiować gotowy wzorzec:
 
 ### Dane firmy
 
-| Pole | Przykład | Uwagi |
-|------|----------|-------|
-| `siteName` | `TermoSerwis` | Krótka nazwa **marketingowa** (header, logo) |
-| `companyLegalName` | `TermoSerwis Jan Kowalski` | Pełna forma prawna (RODO, schema) — nie mylić ze `siteName` |
-| `siteCity` | `Kraków i okolice` | Pod H1 w hero — **jedno miasto**, nie lista |
-| `cityLocative` | `w Krakowie` | Odmiana miejscowości — sprawdź ręcznie |
-| `email` | `kontakt@termoserwis.pl` | |
-| `phoneDisplay` | `12 345 67 89` | Format wyświetlany |
-| `phoneE164` | `+48123456789` | WhatsApp, tel: link |
-| `nip` / `regon` | | Footer + RODO |
-| `hours` | `Pn - Pt: 8:00 - 17:00` | |
-| `serviceArea` | `Kraków i okolice, dojazd` | Gdy brak adresu — fallback w Kontakt |
-| `address*` | `ul. Przykładowa 1, 00-000 Kraków` | **Priorytet w Kontakt** — gdy wypełnione, karta „Adres” |
+| Pole               | Przykład                           | Uwagi                                                       |
+| ------------------ | ---------------------------------- | ----------------------------------------------------------- |
+| `siteName`         | `TermoSerwis`                      | Krótka nazwa **marketingowa** (header, logo)                |
+| `companyLegalName` | `TermoSerwis Jan Kowalski`         | Pełna forma prawna (RODO, schema) — nie mylić ze `siteName` |
+| `siteCity`         | `Kraków i okolice`                 | Pod H1 w hero — **jedno miasto**, nie lista                 |
+| `cityLocative`     | `w Krakowie`                       | Odmiana miejscowości — sprawdź ręcznie                      |
+| `email`            | `kontakt@termoserwis.pl`           |                                                             |
+| `phoneDisplay`     | `12 345 67 89`                     | Format wyświetlany                                          |
+| `phoneE164`        | `+48123456789`                     | WhatsApp, tel: link                                         |
+| `nip` / `regon`    |                                    | Footer + RODO                                               |
+| `hours`            | `Pn - Pt: 8:00 - 17:00`            |                                                             |
+| `serviceArea`      | `Kraków i okolice, dojazd`         | Gdy brak adresu — fallback w Kontakt                        |
+| `address*`         | `ul. Przykładowa 1, 00-000 Kraków` | **Priorytet w Kontakt** — gdy wypełnione, karta „Adres”     |
 
 ### SEO i linki
 
-| Pole | Uwagi |
-|------|-------|
-| `siteDefaultUrl` | Domena klienta |
-| `siteTitle` | `[Usługa] [Miasto] \| [siteName]` (max ~60 znaków) |
-| `siteKeywords` | 5–8 fraz z oferty, bez stuffingu |
-| `siteDescription` | 1–2 zdania, **inne niż H1**, z CTA/telefonem |
-| `mapsUrl` | Link do profilu Google Maps |
-| `googleReviewsUrl` | Ten sam lub osobny link do opinii |
+| Pole                                 | Uwagi                                                             |
+| ------------------------------------ | ----------------------------------------------------------------- |
+| `siteDefaultUrl`                     | Domena klienta                                                    |
+| `siteTitle`                          | `[Usługa] [Miasto] \| [siteName]` (max ~60 znaków)                |
+| `siteKeywords`                       | 5–8 fraz z oferty, bez stuffingu                                  |
+| `siteDescription`                    | 1–2 zdania, **inne niż H1**, z CTA/telefonem                      |
+| `mapsUrl`                            | Link do profilu Google Maps                                       |
+| `googleReviewsUrl`                   | Ten sam lub osobny link do opinii                                 |
 | `googleRating` / `googleReviewCount` | Ocena i **łączna liczba opinii z Maps** (nie długość `reviews[]`) |
-| `googlePlaceId` | Opcjonalnie — żywe opinie z API |
+| `googlePlaceId`                      | Opcjonalnie — żywe opinie z API                                   |
 
 ### Treści strony
 
-| Pole | Co zawiera |
-|------|------------|
-| `heroHeadline` | **H1 — główna usługa firmy** (np. klima, pompy, kotły, mix HVAC) |
-| `heroBullets` | **2 punkty — najważniejsze atuty/oferty** (priorytet firmy) |
-| `footerTagline` | Krótki opis profilu w stopce |
-| `services` | **4–6 kart — rzeczywista oferta, kolejność = priorytet** |
-| `faqs` | **5 pytań pod profil HVAC firmy** (nie kopiuj `default.ts` bez zmian) |
-| `serviceOptionGroups` | **Lustrzane odbicie `services[]`** — bez grup spoza oferty |
-| `partners` | Tylko potwierdzone marki ze strony klienta, lub `[]` |
-| `reviews` | Opinie fallback (gdy brak Google API) |
-| `gallery` | Zdjęcia realizacji |
-| `logoIncludesName` | `true` = logo ma napis; `false` = pokaż `siteName` obok ikony |
-| `faviconUrl` | Favicon (zwykle wycinek logo), np. `"/favicon.png"` |
+| Pole                  | Co zawiera                                                            |
+| --------------------- | --------------------------------------------------------------------- |
+| `heroHeadline`        | **H1 — główna usługa firmy** (np. klima, pompy, kotły, mix HVAC)      |
+| `heroBullets`         | **2 punkty — najważniejsze atuty/oferty** (priorytet firmy)           |
+| `footerTagline`       | Krótki opis profilu w stopce                                          |
+| `services`            | **4–6 kart — rzeczywista oferta, kolejność = priorytet**              |
+| `faqs`                | **5 pytań pod profil HVAC firmy** (nie kopiuj `default.ts` bez zmian) |
+| `serviceOptionGroups` | **Lustrzane odbicie `services[]`** — bez grup spoza oferty            |
+| `partners`            | Tylko potwierdzone marki ze strony klienta, lub `[]`                  |
+| `reviews`             | Opinie fallback (gdy brak Google API)                                 |
+| `gallery`             | Zdjęcia realizacji                                                    |
+| `logoIncludesName`    | `true` = logo ma napis; `false` = pokaż `siteName` obok ikony         |
+| `faviconUrl`          | Favicon (zwykle wycinek logo), np. `"/favicon.png"`                   |
 
 ### FAQ pod profil branżowy (HVAC)
 
 `faqs[]` w presecie to **5 pytań dopasowanych do tego, czym firma faktycznie się zajmuje**. Domyślny `default.ts` ma przykład pod **mix HVAC** — przy personalizacji **przepisz FAQ** pod profil klienta.
 
 **Zasady:**
+
 - **3–4 pytania branżowe** (montaż, serwis, ceny, marki, czas realizacji)
 - **1–2 uniwersalne** (dojazd, obszar `siteCity`, awaria jeśli dotyczy)
 - **Zero pytań** o usługi, których firma nie oferuje
 
-| Profil firmy | O czym pytać w FAQ |
-|--------------|-------------------|
-| Klimatyzacja | montaż split/multi, koszt, serwis, odgrzybianie, marki |
-| Pompy ciepła | montaż, serwis gwarancyjny, pierwsze uruchomienie, awaria |
-| Kotły / ogrzewanie | przegląd, koszt serwisu, autoryzacja marek, naprawa awaryjna |
-| Wentylacja / rekuperacja | montaż, dobór mocy, serwis, przeglądy |
-| Mix HVAC | po 1 temacie z głównych filarów oferty + dojazd |
+| Profil firmy             | O czym pytać w FAQ                                           |
+| ------------------------ | ------------------------------------------------------------ |
+| Klimatyzacja             | montaż split/multi, koszt, serwis, odgrzybianie, marki       |
+| Pompy ciepła             | montaż, serwis gwarancyjny, pierwsze uruchomienie, awaria    |
+| Kotły / ogrzewanie       | przegląd, koszt serwisu, autoryzacja marek, naprawa awaryjna |
+| Wentylacja / rekuperacja | montaż, dobór mocy, serwis, przeglądy                        |
+| Mix HVAC                 | po 1 temacie z głównych filarów oferty + dojazd              |
 
 Ceny w odpowiedziach: tylko gdy klient podaje je publicznie na swojej stronie.
 
@@ -204,12 +205,12 @@ Przy każdym kliencie: wygeneruj `public/favicon.png` z logo (ikona lub całe lo
 
 **Priorytet:** zdjęcia ze strony klienta, potem zapasowe z TOOLS.
 
-| Realizacje u klienta | `gallery[]` |
-|----------------------|-------------|
-| 0 | 6 z folderu zapasowego |
-| 1–5 | klient + zapasowe **do 6 łącznie** |
-| 6 | tylko klient |
-| 7+ | **wszystkie** zdjęcia klienta (nie ucinaj) |
+| Realizacje u klienta | `gallery[]`                                |
+| -------------------- | ------------------------------------------ |
+| 0                    | 6 z folderu zapasowego                     |
+| 1–5                  | klient + zapasowe **do 6 łącznie**         |
+| 6                    | tylko klient                               |
+| 7+                   | **wszystkie** zdjęcia klienta (nie ucinaj) |
 
 1. Zbierz zdjęcia klienta, policz ile masz
 2. Wgraj do `public/gallery/` (klient + ewentualne uzupełnienie)
@@ -218,10 +219,10 @@ Przy każdym kliencie: wygeneruj `public/favicon.png` z logo (ikona lub całe lo
 
 **Foldery zapasowe** (gdy brakuje u klienta):
 
-| Profil | Folder |
-|--------|--------|
-| Klimatyzacja | `C:\Users\Tymek\Desktop\TOOLS\KLIMATYZACJA` |
-| Pompy ciepła / kotły | `C:\Users\Tymek\Desktop\TOOLS\POMPY KOTLY` |
+| Profil               | Folder                                      |
+| -------------------- | ------------------------------------------- |
+| Klimatyzacja         | `C:\Users\Tymek\Desktop\TOOLS\KLIMATYZACJA` |
+| Pompy ciepła / kotły | `C:\Users\Tymek\Desktop\TOOLS\POMPY KOTLY`  |
 
 Mix HVAC → folder głównego filaru. Pełna procedura: [PROMPT-PERSONALIZACJA.md](./PROMPT-PERSONALIZACJA.md) → sekcja 4.
 
@@ -237,6 +238,7 @@ W `src/styles.css` dostosuj:
 - `--cta`, `--cta-hover` — przyciski (hover glow też z `--cta` / `--brand-cyan`)
 
 Po zmianie palety przewiń stronę i **najedź na przyciski** — poświata nie może zostać w starym kolorze.
+
 - `--primary`, `--accent` — ogólna paleta
 
 ## Krok 6 — Formularz (Web3Forms)

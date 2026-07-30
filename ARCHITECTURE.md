@@ -16,11 +16,11 @@ komponenty + strony           ← layout (nie edytuj przy personalizacji)
 
 ## Warstwy
 
-| Warstwa | Odpowiedzialność |
-|---------|------------------|
-| **Preset** | Wszystkie dane klienta, copy, SEO, sekcje, kolory |
-| **site.ts** | Mapowanie presetu na stałe eksportowane do komponentów |
-| **Komponenty** | Render UI, zero hardcodów danych klienta |
+| Warstwa        | Odpowiedzialność                                                  |
+| -------------- | ----------------------------------------------------------------- |
+| **Preset**     | Wszystkie dane klienta, copy, SEO, sekcje, kolory                 |
+| **site.ts**    | Mapowanie presetu na stałe eksportowane do komponentów            |
+| **Komponenty** | Render UI, zero hardcodów danych klienta                          |
 | **styles.css** | Domyślna paleta matki; nadpisywana przez `brandColors` w presecie |
 
 ## Pola konfiguracyjne presetu
@@ -32,13 +32,13 @@ komponenty + strony           ← layout (nie edytuj przy personalizacji)
 
 ### Sekcje (`sections`)
 
-| Flaga | Sekcja |
-|-------|--------|
-| `partners` | Marki partnerów pod usługami |
-| `gallery` | Realizacje |
-| `reviews` | Opinie Google |
-| `howItWorks` | Jak to działa |
-| `faq` | Najczęstsze pytania |
+| Flaga         | Sekcja                       |
+| ------------- | ---------------------------- |
+| `partners`    | Marki partnerów pod usługami |
+| `gallery`     | Realizacje                   |
+| `reviews`     | Opinie Google                |
+| `howItWorks`  | Jak to działa                |
+| `faq`         | Najczęstsze pytania          |
 | `contactForm` | Formularz w hero i kontakcie |
 
 ### Nagłówki (`sectionTitles`)
@@ -53,12 +53,12 @@ Tytuły sekcji, podtytuły, teksty formularza — wszystko konfigurowalne z pres
 
 ## Co edytować przy personalizacji
 
-| Plik | Kiedy |
-|------|-------|
-| `src/lib/presets/[klient].ts` | Zawsze |
-| `src/styles.css` | Kolory marki (gdy brak `brandColors`) |
-| `public/*` | Logo, favicon, galeria |
-| `.env` | `VITE_SITE_PRESET`, `VITE_SITE_URL` |
+| Plik                          | Kiedy                                 |
+| ----------------------------- | ------------------------------------- |
+| `src/lib/presets/[klient].ts` | Zawsze                                |
+| `src/styles.css`              | Kolory marki (gdy brak `brandColors`) |
+| `public/*`                    | Logo, favicon, galeria                |
+| `.env`                        | `VITE_SITE_PRESET`, `VITE_SITE_URL`   |
 
 ## Czego NIE edytować
 

@@ -34,10 +34,11 @@ if (existsSync(targetFile)) {
   process.exit(1);
 }
 
-const exportName = id
-  .split("-")
-  .map((part, i) => (i === 0 ? part : part.charAt(0).toUpperCase() + part.slice(1)))
-  .join("") + "Preset";
+const exportName =
+  id
+    .split("-")
+    .map((part, i) => (i === 0 ? part : part.charAt(0).toUpperCase() + part.slice(1)))
+    .join("") + "Preset";
 
 const defaultSrc = readFileSync(join(presetsDir, "default.ts"), "utf8");
 const clientSrc = defaultSrc
@@ -60,21 +61,18 @@ if (!indexSrc.includes(importLine.trim())) {
   indexSrc = importLine + indexSrc;
 }
 
-indexSrc = indexSrc.replace(
-  /export type PresetId =\n([\s\S]*?);/,
-  (match, body) => {
-    const ids = body
-      .split("\n")
-      .map((line) => line.trim())
-      .filter((line) => line.startsWith("|"))
-      .map((line) => line.replace(/^\|\s*"/, "").replace(/"\s*$/, ""));
+indexSrc = indexSrc.replace(/export type PresetId =\n([\s\S]*?);/, (match, body) => {
+  const ids = body
+    .split("\n")
+    .map((line) => line.trim())
+    .filter((line) => line.startsWith("|"))
+    .map((line) => line.replace(/^\|\s*"/, "").replace(/"\s*$/, ""));
 
-    if (ids.includes(id)) return match;
-    ids.push(id);
-    const formatted = ids.map((item) => `  | "${item}"`).join("\n");
-    return `export type PresetId =\n${formatted};`;
-  },
-);
+  if (ids.includes(id)) return match;
+  ids.push(id);
+  const formatted = ids.map((item) => `  | "${item}"`).join("\n");
+  return `export type PresetId =\n${formatted};`;
+});
 
 indexSrc = indexSrc.replace(
   /export const PRESETS: Record<PresetId, SitePreset> = \{([\s\S]*?)\};/,

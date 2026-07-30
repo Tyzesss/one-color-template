@@ -126,7 +126,6 @@ const GALLERY_PREVIEW_COUNT = 3;
 
 const faqs = FAQS;
 
-
 function HeroReviewStamp({
   rating,
   reviewCount,
@@ -151,15 +150,16 @@ function HeroReviewStamp({
     >
       <div className="flex shrink-0 items-center gap-0.5" aria-hidden>
         {Array.from({ length: 5 }).map((_, i) => (
-          <Star key={i} className="h-3.5 w-3.5 fill-amber-400 text-amber-400 md:h-[1.125rem] md:w-[1.125rem]" />
+          <Star
+            key={i}
+            className="h-3.5 w-3.5 fill-amber-400 text-amber-400 md:h-[1.125rem] md:w-[1.125rem]"
+          />
         ))}
       </div>
       <span className="text-lg font-bold leading-none text-primary md:text-2xl">
         {rating.toFixed(1)}
       </span>
-      <span className="text-xs text-muted-foreground md:text-sm">
-        {reviewCount} opinii Google
-      </span>
+      <span className="text-xs text-muted-foreground md:text-sm">{reviewCount} opinii Google</span>
     </a>
   );
 }
@@ -168,10 +168,7 @@ function CTAButton({ className = "" }: { className?: string }) {
   return (
     <a
       href={PHONE_HREF}
-      className={cn(
-        "btn-cta px-6 py-3.5 text-sm md:px-12 md:py-5 md:text-xl",
-        className,
-      )}
+      className={cn("btn-cta px-6 py-3.5 text-sm md:px-12 md:py-5 md:text-xl", className)}
     >
       <Phone className="h-6 w-6 shrink-0 md:h-7 md:w-7" />
       <span>Zadzwoń · {PHONE_DISPLAY}</span>
@@ -185,11 +182,7 @@ const HERO_TRUST_ICONS: Record<HeroTrustBadgeIcon, typeof ShieldCheck> = {
   "map-pin": MapPin,
 };
 
-function HeroTrustBadges({
-  badges,
-}: {
-  badges: { label: string; icon: HeroTrustBadgeIcon }[];
-}) {
+function HeroTrustBadges({ badges }: { badges: { label: string; icon: HeroTrustBadgeIcon }[] }) {
   if (!badges.length) return null;
 
   return (
@@ -403,7 +396,10 @@ function LeadForm({
         </span>
         <span className="min-w-0">
           Akceptuję{" "}
-          <Link to="/polityka-prywatnosci" className="text-primary underline underline-offset-2 hover:text-brand-navy">
+          <Link
+            to="/polityka-prywatnosci"
+            className="text-primary underline underline-offset-2 hover:text-brand-navy"
+          >
             Politykę prywatności
           </Link>{" "}
           i wyrażam zgodę na kontakt.
@@ -543,7 +539,12 @@ function GalleryLightbox({
 
       <div className="relative z-10 flex h-full items-center justify-center gap-2 px-3 py-14 sm:gap-4 sm:px-6 md:gap-5">
         {hasNav ? (
-          <button type="button" onClick={prev} className="gallery-lightbox__nav shrink-0" aria-label="Poprzednie zdjęcie">
+          <button
+            type="button"
+            onClick={prev}
+            className="gallery-lightbox__nav shrink-0"
+            aria-label="Poprzednie zdjęcie"
+          >
             <ChevronLeft className="h-5 w-5" />
           </button>
         ) : (
@@ -558,7 +559,9 @@ function GalleryLightbox({
               alt={item.alt}
               className={cn(
                 "gallery-lightbox__image max-h-[min(72vh,760px)] w-full object-contain",
-                slideDir === "right" ? "gallery-lightbox__image--from-right" : "gallery-lightbox__image--from-left",
+                slideDir === "right"
+                  ? "gallery-lightbox__image--from-right"
+                  : "gallery-lightbox__image--from-left",
               )}
             />
           </div>
@@ -570,7 +573,12 @@ function GalleryLightbox({
         </div>
 
         {hasNav ? (
-          <button type="button" onClick={next} className="gallery-lightbox__nav shrink-0" aria-label="Następne zdjęcie">
+          <button
+            type="button"
+            onClick={next}
+            className="gallery-lightbox__nav shrink-0"
+            aria-label="Następne zdjęcie"
+          >
             <ChevronRight className="h-5 w-5" />
           </button>
         ) : (
@@ -789,8 +797,7 @@ function scrollToSection(href: string) {
   if (!section) return;
 
   // Content wrapper (skips section padding void under the navbar).
-  const content =
-    section.querySelector<HTMLElement>(":scope > .relative") ?? section;
+  const content = section.querySelector<HTMLElement>(":scope > .relative") ?? section;
 
   const header = document.querySelector("header");
   const headerH = header?.getBoundingClientRect().height ?? HEADER_HEIGHT;
@@ -976,364 +983,382 @@ function Index() {
   return (
     <div className="page-shell">
       <div className="page-content">
-      <SiteHeader />
+        <SiteHeader />
 
-      <div className="hero-services-unit">
-        <section
-          id="top"
-          className="relative z-10 flex min-h-dvh flex-col scroll-mt-24 bg-white pt-24 text-foreground md:min-h-svh md:pt-40"
-        >
-        <div
-          className={cn(
-            "relative mx-auto grid w-full max-w-7xl grid-cols-1 items-start gap-6 px-4 md:grid-cols-[minmax(0,1.12fr)_minmax(0,0.98fr)] md:items-stretch md:gap-9 lg:gap-11",
-          )}
-        >
-          <div
-            className="flex flex-col items-center text-center md:col-start-1 md:row-start-1 md:items-start md:text-left"
+        <div className="hero-services-unit">
+          <section
+            id="top"
+            className="relative z-10 flex min-h-dvh flex-col scroll-mt-24 bg-white pt-24 text-foreground md:min-h-svh md:pt-40"
           >
-            {HERO_BADGE ? (
-              <p className="hero-enter mb-3 inline-flex items-center gap-2 rounded-full bg-muted px-3.5 py-1.5 text-sm font-semibold text-foreground md:mb-4">
-                <span className="h-2 w-2 shrink-0 rounded-full bg-primary" aria-hidden />
-                {HERO_BADGE}
-              </p>
-            ) : null}
-            <h1 className="hero-enter hero-enter-delay-1 relative font-extrabold leading-[1.2] text-foreground max-md:mx-auto md:text-[clamp(2.5rem,2.65vw+1.1rem,3.75rem)] md:leading-[1.22]">
-              {HERO_HEADLINE_MOBILE_LINES?.length ? (
-                <>
-                  <span className="hero-headline-mobile md:hidden">
-                    {HERO_HEADLINE_MOBILE_LINES.map((line, i) => {
-                      const isAccent = i === HERO_HEADLINE_MOBILE_LINES.length - 1;
-                      return (
-                        <span
-                          key={line}
-                          className={cn(
-                            "hero-headline-mobile__line",
-                            isAccent && "text-gradient-pro",
-                          )}
-                        >
-                          {line}
-                        </span>
-                      );
-                    })}
-                  </span>
-                  <span className="hidden md:block">
-                    {HERO_HEADLINE_MOBILE_LINES.map((line, i) => {
-                      const isAccent = i === HERO_HEADLINE_MOBILE_LINES.length - 1;
-                      return (
-                        <span
-                          key={line}
-                          className={cn(
-                            "block",
-                            isAccent ? "text-gradient-pro leading-[1.28]" : "whitespace-nowrap",
-                          )}
-                        >
-                          {line}
-                        </span>
-                      );
-                    })}
-                  </span>
-                </>
-              ) : (
-                (() => {
-                  const accent = "i klimatyzacyjne";
-                  const idx = HERO_HEADLINE.indexOf(accent);
-                  if (idx === -1) return HERO_HEADLINE;
-                  return (
-                    <>
-                      {HERO_HEADLINE.slice(0, idx)}
-                      <span className="text-gradient-pro">{accent}</span>
-                      {HERO_HEADLINE.slice(idx + accent.length)}
-                    </>
-                  );
-                })()
+            <div
+              className={cn(
+                "relative mx-auto grid w-full max-w-7xl grid-cols-1 items-start gap-6 px-4 md:grid-cols-[minmax(0,1.12fr)_minmax(0,0.98fr)] md:items-stretch md:gap-9 lg:gap-11",
               )}
-            </h1>
-
-            <p className="hero-enter hero-enter-delay-2 mt-1.5 text-lg font-medium text-brand-navy md:mt-3.5 md:text-[1.7rem]">
-              {SITE_CITY}
-            </p>
-
-            {HERO_TRUST_BADGES.length > 0 ? (
-              <div className="hero-enter hero-enter-delay-3 mt-5 hidden md:mt-6 md:block">
-                <HeroTrustBadges badges={HERO_TRUST_BADGES} />
-              </div>
-            ) : HERO_DESCRIPTION ? (
-              <p className="hero-enter hero-enter-delay-3 mt-5 hidden max-w-lg text-left text-base leading-relaxed text-muted-foreground md:mt-6 md:block lg:text-[1.0625rem] lg:leading-[1.65]">
-                {HERO_DESCRIPTION}
-              </p>
-            ) : (
-              <ul className="hero-enter hero-enter-delay-3 mx-auto mt-4 hidden max-w-xl space-y-2.5 text-left text-base leading-snug text-foreground md:mx-0 md:mt-6 md:block md:max-w-none md:space-y-3.5 md:text-[1.25rem] md:leading-relaxed">
-                {HERO_BULLETS.map((bullet) => (
-                  <li key={bullet} className="flex items-start gap-2.5 md:gap-3">
-                    <span
-                      className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary md:mt-3 md:h-2 md:w-2"
-                      aria-hidden
-                    />
-                    {bullet}
-                  </li>
-                ))}
-              </ul>
-            )}
-
-            <div className="hero-enter hero-enter-delay-4 mt-5 hidden md:mt-8 md:block">
-              <CTAButton className="md:px-12 md:py-5 md:text-xl" />
-            </div>
-
-            <div className="hero-enter hero-enter-delay-5 mt-5 flex justify-center md:hidden">
-              <CTAButton className="px-8 py-4 text-base" />
-            </div>
-          </div>
-
-          <div className="relative mt-2 w-full max-md:pb-8 md:col-start-2 md:row-start-1 md:mt-0 md:min-h-0 md:pb-0">
-            <div className="hero-enter hero-enter-delay-7 relative max-md:aspect-[5/4] md:absolute md:inset-0">
-              <div className="h-full overflow-hidden rounded-[1.75rem] shadow-card md:rounded-[2.5rem] lg:rounded-[3rem]">
-                <img
-                  src={HERO_IMAGE ?? "/hero-klimatyzacja.png"}
-                  alt="Pompa ciepła — montaż zewnętrzny i zasobnik ciepła"
-                  className="h-full w-full object-cover object-center"
-                  width={900}
-                  height={900}
-                  decoding="async"
-                  fetchPriority="high"
-                />
-              </div>
-              <HeroReviewStamp
-                rating={googleReviews.rating}
-                reviewCount={googleReviews.reviewCount}
-                profileUrl={googleReviews.profileUrl || GOOGLE_REVIEWS_URL}
-                className="absolute z-10 max-md:bottom-0 max-md:left-1/2 max-md:-translate-x-1/2 max-md:translate-y-1/2 md:-bottom-5 md:-left-5"
-              />
-            </div>
-          </div>
-        </div>
-
-          <div className="relative z-10 mt-auto flex justify-center pb-8 pt-5 md:pb-7 md:pt-6">
-            <a
-              href="#uslugi"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection("#uslugi");
-              }}
-              className="hero-scroll-cue flex flex-col items-center gap-1.5 text-primary transition-smooth hover:text-primary/80"
             >
-              <span className="text-xs font-semibold uppercase tracking-[0.16em] md:text-sm">
-                Przewiń
-              </span>
-              <ChevronDown className="hero-scroll-cue__icon h-6 w-6 md:h-7 md:w-7" strokeWidth={2} aria-hidden />
-            </a>
-          </div>
-        </section>
+              <div className="flex flex-col items-center text-center md:col-start-1 md:row-start-1 md:items-start md:text-left">
+                {HERO_BADGE ? (
+                  <p className="hero-enter mb-3 inline-flex items-center gap-2 rounded-full bg-muted px-3.5 py-1.5 text-sm font-semibold text-foreground md:mb-4">
+                    <span className="h-2 w-2 shrink-0 rounded-full bg-primary" aria-hidden />
+                    {HERO_BADGE}
+                  </p>
+                ) : null}
+                <h1 className="hero-enter hero-enter-delay-1 relative font-extrabold leading-[1.2] text-foreground max-md:mx-auto md:text-[clamp(2.5rem,2.65vw+1.1rem,3.75rem)] md:leading-[1.22]">
+                  {HERO_HEADLINE_MOBILE_LINES?.length ? (
+                    <>
+                      <span className="hero-headline-mobile md:hidden">
+                        {HERO_HEADLINE_MOBILE_LINES.map((line, i) => {
+                          const isAccent = i === HERO_HEADLINE_MOBILE_LINES.length - 1;
+                          return (
+                            <span
+                              key={line}
+                              className={cn(
+                                "hero-headline-mobile__line",
+                                isAccent && "text-gradient-pro",
+                              )}
+                            >
+                              {line}
+                            </span>
+                          );
+                        })}
+                      </span>
+                      <span className="hidden md:block">
+                        {HERO_HEADLINE_MOBILE_LINES.map((line, i) => {
+                          const isAccent = i === HERO_HEADLINE_MOBILE_LINES.length - 1;
+                          return (
+                            <span
+                              key={line}
+                              className={cn(
+                                "block",
+                                isAccent ? "text-gradient-pro leading-[1.28]" : "whitespace-nowrap",
+                              )}
+                            >
+                              {line}
+                            </span>
+                          );
+                        })}
+                      </span>
+                    </>
+                  ) : (
+                    (() => {
+                      const accent = "i klimatyzacyjne";
+                      const idx = HERO_HEADLINE.indexOf(accent);
+                      if (idx === -1) return HERO_HEADLINE;
+                      return (
+                        <>
+                          {HERO_HEADLINE.slice(0, idx)}
+                          <span className="text-gradient-pro">{accent}</span>
+                          {HERO_HEADLINE.slice(idx + accent.length)}
+                        </>
+                      );
+                    })()
+                  )}
+                </h1>
 
-        <Section
-          id="uslugi"
-          tone="white"
-          className="max-md:pb-6"
-          eyebrow={SECTION_TITLES.servicesEyebrow}
-          title={SECTION_TITLES.servicesTitle}
-          subtitle={SERVICES_SECTION_SUBTITLE}
-        >
-          <MobileCarousel items={services} renderItem={(s) => <ServiceCard s={s} index={services.indexOf(s)} />} />
-          <div className="hidden md:grid grid-cols-3 gap-5 lg:gap-6">
-            {services.map((s, i) => (
-              <ServiceCard key={s.title} s={s} index={i} />
-            ))}
-          </div>
+                <p className="hero-enter hero-enter-delay-2 mt-1.5 text-lg font-medium text-brand-navy md:mt-3.5 md:text-[1.7rem]">
+                  {SITE_CITY}
+                </p>
 
-          {SECTIONS.partners ? (
-            <div className="mt-7 pb-3 md:mt-8 md:pb-0">
-              <PartnersSection />
-            </div>
-          ) : null}
-        </Section>
-      </div>
-
-      {SECTIONS.howItWorks ? <HowItWorks /> : null}
-
-      {SECTIONS.gallery ? (
-        <Section
-          id="realizacje"
-          tone="white"
-          eyebrow={SECTION_TITLES.galleryEyebrow}
-          title={SECTION_TITLES.galleryTitle}
-          subtitle={GALLERY_SECTION_SUBTITLE}
-        >
-          <GallerySection />
-        </Section>
-      ) : null}
-
-      {SECTIONS.reviews ? (
-        <Section
-          id="opinie"
-          tone="muted"
-          eyebrow={SECTION_TITLES.reviewsEyebrow}
-          title={SECTION_TITLES.reviewsTitle}
-          subtitle={SECTION_TITLES.reviewsSubtitle}
-        >
-          <GoogleReviewsSection data={googleReviews} />
-        </Section>
-      ) : null}
-
-      {SECTIONS.faq ? (
-        <Section
-          id="faq"
-          tone="white"
-          eyebrow={SECTION_TITLES.faqEyebrow}
-          title={SECTION_TITLES.faqTitle}
-          subtitle={SECTION_TITLES.faqSubtitle}
-        >
-        <Reveal>
-          <Accordion
-            type="single"
-            collapsible
-            className="mx-auto flex w-full max-w-3xl flex-col gap-3 text-left md:max-w-4xl"
-          >
-            {faqs.map((f, i) => (
-              <AccordionItem
-                key={i}
-                value={`item-${i}`}
-                className="overflow-hidden rounded-[1.5rem] border border-transparent border-b-0 bg-muted transition-all duration-300 hover:border-[#f1f5f9] hover:bg-white hover:shadow-md data-[state=open]:border-[#f1f5f9] data-[state=open]:bg-white data-[state=open]:shadow-md"
-              >
-                <AccordionTrigger className="group gap-4 px-5 py-5 text-left text-base font-bold tracking-tight text-foreground hover:no-underline hover:text-primary data-[state=open]:text-primary [&>svg]:hidden [&[data-state=open]>div]:rotate-180 [&[data-state=open]>div]:bg-primary [&[data-state=open]>div]:text-white">
-                  <span className="flex-1">{f.q}</span>
-                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white text-muted-foreground shadow-sm transition-all duration-300 group-hover:bg-primary group-hover:text-white">
-                    <ChevronDown className="h-4 w-4" />
+                {HERO_TRUST_BADGES.length > 0 ? (
+                  <div className="hero-enter hero-enter-delay-3 mt-5 hidden md:mt-6 md:block">
+                    <HeroTrustBadges badges={HERO_TRUST_BADGES} />
                   </div>
-                </AccordionTrigger>
-                <AccordionContent className="border-t border-white/80 px-5 pb-5 pt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
-                  {f.a}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </Reveal>
-      </Section>
-      ) : null}
+                ) : HERO_DESCRIPTION ? (
+                  <p className="hero-enter hero-enter-delay-3 mt-5 hidden max-w-lg text-left text-base leading-relaxed text-muted-foreground md:mt-6 md:block lg:text-[1.0625rem] lg:leading-[1.65]">
+                    {HERO_DESCRIPTION}
+                  </p>
+                ) : (
+                  <ul className="hero-enter hero-enter-delay-3 mx-auto mt-4 hidden max-w-xl space-y-2.5 text-left text-base leading-snug text-foreground md:mx-0 md:mt-6 md:block md:max-w-none md:space-y-3.5 md:text-[1.25rem] md:leading-relaxed">
+                    {HERO_BULLETS.map((bullet) => (
+                      <li key={bullet} className="flex items-start gap-2.5 md:gap-3">
+                        <span
+                          className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary md:mt-3 md:h-2 md:w-2"
+                          aria-hidden
+                        />
+                        {bullet}
+                      </li>
+                    ))}
+                  </ul>
+                )}
 
-      {/* KONTAKT + WYCENA */}
-      <section
-        id="kontakt"
-        className="relative scroll-mt-24 overflow-hidden rounded-[2rem] bg-muted px-4 pt-10 pb-14 text-foreground md:rounded-[3rem] md:pt-16 md:pb-20"
-      >
-        <div className="relative mx-auto max-w-7xl">
-          <div id="wycena" className="scroll-mt-24">
-            <Reveal className="text-center md:hidden">
-              <p className="section-eyebrow">{SECTION_TITLES.contactEyebrow}</p>
-              <h2 className="mt-1.5 text-2xl font-bold tracking-tight text-foreground">
-                {SECTION_TITLES.contactTitle}
-              </h2>
-              <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-                {SECTION_TITLES.contactSubtitle}
-              </p>
-            </Reveal>
+                <div className="hero-enter hero-enter-delay-4 mt-5 hidden md:mt-8 md:block">
+                  <CTAButton className="md:px-12 md:py-5 md:text-xl" />
+                </div>
 
-            <div className="mt-6 flex flex-col gap-3 md:hidden">
-              {contactCards.map((c, i) => (
-                <ContactCard key={c.title} c={c} index={i} />
+                <div className="hero-enter hero-enter-delay-5 mt-5 flex justify-center md:hidden">
+                  <CTAButton className="px-8 py-4 text-base" />
+                </div>
+              </div>
+
+              <div className="relative mt-2 w-full max-md:pb-8 md:col-start-2 md:row-start-1 md:mt-0 md:min-h-0 md:pb-0">
+                <div className="hero-enter hero-enter-delay-7 relative max-md:aspect-[5/4] md:absolute md:inset-0">
+                  <div className="h-full overflow-hidden rounded-[1.75rem] shadow-card md:rounded-[2.5rem] lg:rounded-[3rem]">
+                    <img
+                      src={HERO_IMAGE ?? "/hero-klimatyzacja.png"}
+                      alt="Pompa ciepła — montaż zewnętrzny i zasobnik ciepła"
+                      className="h-full w-full object-cover object-center"
+                      width={900}
+                      height={900}
+                      decoding="async"
+                      fetchPriority="high"
+                    />
+                  </div>
+                  <HeroReviewStamp
+                    rating={googleReviews.rating}
+                    reviewCount={googleReviews.reviewCount}
+                    profileUrl={googleReviews.profileUrl || GOOGLE_REVIEWS_URL}
+                    className="absolute z-10 max-md:bottom-0 max-md:left-1/2 max-md:-translate-x-1/2 max-md:translate-y-1/2 md:-bottom-5 md:-left-5"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="relative z-10 mt-auto flex justify-center pb-8 pt-5 md:pb-7 md:pt-6">
+              <a
+                href="#uslugi"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection("#uslugi");
+                }}
+                className="hero-scroll-cue flex flex-col items-center gap-1.5 text-primary transition-smooth hover:text-primary/80"
+              >
+                <span className="text-xs font-semibold uppercase tracking-[0.16em] md:text-sm">
+                  Przewiń
+                </span>
+                <ChevronDown
+                  className="hero-scroll-cue__icon h-6 w-6 md:h-7 md:w-7"
+                  strokeWidth={2}
+                  aria-hidden
+                />
+              </a>
+            </div>
+          </section>
+
+          <Section
+            id="uslugi"
+            tone="white"
+            className="max-md:pb-6"
+            eyebrow={SECTION_TITLES.servicesEyebrow}
+            title={SECTION_TITLES.servicesTitle}
+            subtitle={SERVICES_SECTION_SUBTITLE}
+          >
+            <MobileCarousel
+              items={services}
+              renderItem={(s) => <ServiceCard s={s} index={services.indexOf(s)} />}
+            />
+            <div className="hidden md:grid grid-cols-3 gap-5 lg:gap-6">
+              {services.map((s, i) => (
+                <ServiceCard key={s.title} s={s} index={i} />
               ))}
             </div>
 
-            {SECTIONS.contactForm ? (
-              <>
-                <div className="mx-6 my-6 flex items-center gap-3 md:hidden" aria-hidden>
-                  <span className="h-px flex-1 bg-[#cbd5e1]" />
-                  <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">lub</span>
-                  <span className="h-px flex-1 bg-[#cbd5e1]" />
-                </div>
-
-                <Reveal delay={80} className="md:hidden">
-                  <div className="rounded-[1.5rem] bg-white p-5 shadow-card">
-                    <p className="text-center text-base font-semibold text-foreground">{SECTION_TITLES.formHeadline}</p>
-                    <p className="mt-1 text-center text-xs text-muted-foreground">{SECTION_TITLES.formSubline}</p>
-                    <div className="mt-3.5 [&_form]:text-left">
-                      <LeadForm idPrefix="contact-mobile" collapseExtras />
-                    </div>
-                  </div>
-                </Reveal>
-              </>
+            {SECTIONS.partners ? (
+              <div className="mt-7 pb-3 md:mt-8 md:pb-0">
+                <PartnersSection />
+              </div>
             ) : null}
+          </Section>
+        </div>
 
-            <div className="mx-auto hidden max-w-[60rem] md:block">
-              <Reveal className="text-center">
+        {SECTIONS.howItWorks ? <HowItWorks /> : null}
+
+        {SECTIONS.gallery ? (
+          <Section
+            id="realizacje"
+            tone="white"
+            eyebrow={SECTION_TITLES.galleryEyebrow}
+            title={SECTION_TITLES.galleryTitle}
+            subtitle={GALLERY_SECTION_SUBTITLE}
+          >
+            <GallerySection />
+          </Section>
+        ) : null}
+
+        {SECTIONS.reviews ? (
+          <Section
+            id="opinie"
+            tone="muted"
+            eyebrow={SECTION_TITLES.reviewsEyebrow}
+            title={SECTION_TITLES.reviewsTitle}
+            subtitle={SECTION_TITLES.reviewsSubtitle}
+          >
+            <GoogleReviewsSection data={googleReviews} />
+          </Section>
+        ) : null}
+
+        {SECTIONS.faq ? (
+          <Section
+            id="faq"
+            tone="white"
+            eyebrow={SECTION_TITLES.faqEyebrow}
+            title={SECTION_TITLES.faqTitle}
+            subtitle={SECTION_TITLES.faqSubtitle}
+          >
+            <Reveal>
+              <Accordion
+                type="single"
+                collapsible
+                className="mx-auto flex w-full max-w-3xl flex-col gap-3 text-left md:max-w-4xl"
+              >
+                {faqs.map((f, i) => (
+                  <AccordionItem
+                    key={i}
+                    value={`item-${i}`}
+                    className="overflow-hidden rounded-[1.5rem] border border-transparent border-b-0 bg-muted transition-all duration-300 hover:border-[#f1f5f9] hover:bg-white hover:shadow-md data-[state=open]:border-[#f1f5f9] data-[state=open]:bg-white data-[state=open]:shadow-md"
+                  >
+                    <AccordionTrigger className="group gap-4 px-5 py-5 text-left text-base font-bold tracking-tight text-foreground hover:no-underline hover:text-primary data-[state=open]:text-primary [&>svg]:hidden [&[data-state=open]>div]:rotate-180 [&[data-state=open]>div]:bg-primary [&[data-state=open]>div]:text-white">
+                      <span className="flex-1">{f.q}</span>
+                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white text-muted-foreground shadow-sm transition-all duration-300 group-hover:bg-primary group-hover:text-white">
+                        <ChevronDown className="h-4 w-4" />
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="border-t border-white/80 px-5 pb-5 pt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
+                      {f.a}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </Reveal>
+          </Section>
+        ) : null}
+
+        {/* KONTAKT + WYCENA */}
+        <section
+          id="kontakt"
+          className="relative scroll-mt-24 overflow-hidden rounded-[2rem] bg-muted px-4 pt-10 pb-14 text-foreground md:rounded-[3rem] md:pt-16 md:pb-20"
+        >
+          <div className="relative mx-auto max-w-7xl">
+            <div id="wycena" className="scroll-mt-24">
+              <Reveal className="text-center md:hidden">
                 <p className="section-eyebrow">{SECTION_TITLES.contactEyebrow}</p>
-                <h2 className="mt-1.5 text-4xl font-bold tracking-tight text-foreground lg:text-[2.75rem]">
+                <h2 className="mt-1.5 text-2xl font-bold tracking-tight text-foreground">
                   {SECTION_TITLES.contactTitle}
                 </h2>
-                <p className="mt-1.5 text-base leading-relaxed text-muted-foreground lg:text-lg">
+                <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
                   {SECTION_TITLES.contactSubtitle}
                 </p>
               </Reveal>
 
+              <div className="mt-6 flex flex-col gap-3 md:hidden">
+                {contactCards.map((c, i) => (
+                  <ContactCard key={c.title} c={c} index={i} />
+                ))}
+              </div>
+
               {SECTIONS.contactForm ? (
-                <div className="mx-auto mt-8 grid w-full md:grid-cols-[minmax(0,30rem)_minmax(0,24rem)] md:items-stretch md:justify-center md:gap-7 lg:mt-10 lg:gap-8">
-                  <Reveal className="flex h-full w-full text-left">
-                    <div className="flex h-full w-full flex-col rounded-[1.5rem] bg-white p-5 shadow-card md:p-6">
-                      <p className="text-sm font-semibold text-foreground">Nie możesz się skontaktować?</p>
-                      <p className="mt-1 text-xs text-muted-foreground">
-                        Zostaw numer, oddzwonimy do Ciebie.
+                <>
+                  <div className="mx-6 my-6 flex items-center gap-3 md:hidden" aria-hidden>
+                    <span className="h-px flex-1 bg-[#cbd5e1]" />
+                    <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                      lub
+                    </span>
+                    <span className="h-px flex-1 bg-[#cbd5e1]" />
+                  </div>
+
+                  <Reveal delay={80} className="md:hidden">
+                    <div className="rounded-[1.5rem] bg-white p-5 shadow-card">
+                      <p className="text-center text-base font-semibold text-foreground">
+                        {SECTION_TITLES.formHeadline}
                       </p>
-                      <div className="mt-4 flex flex-col">
-                        <LeadForm idPrefix="contact-desktop" />
+                      <p className="mt-1 text-center text-xs text-muted-foreground">
+                        {SECTION_TITLES.formSubline}
+                      </p>
+                      <div className="mt-3.5 [&_form]:text-left">
+                        <LeadForm idPrefix="contact-mobile" collapseExtras />
                       </div>
                     </div>
                   </Reveal>
+                </>
+              ) : null}
 
-                  <div className="flex h-full w-full flex-col gap-3.5">
+              <div className="mx-auto hidden max-w-[60rem] md:block">
+                <Reveal className="text-center">
+                  <p className="section-eyebrow">{SECTION_TITLES.contactEyebrow}</p>
+                  <h2 className="mt-1.5 text-4xl font-bold tracking-tight text-foreground lg:text-[2.75rem]">
+                    {SECTION_TITLES.contactTitle}
+                  </h2>
+                  <p className="mt-1.5 text-base leading-relaxed text-muted-foreground lg:text-lg">
+                    {SECTION_TITLES.contactSubtitle}
+                  </p>
+                </Reveal>
+
+                {SECTIONS.contactForm ? (
+                  <div className="mx-auto mt-8 grid w-full md:grid-cols-[minmax(0,30rem)_minmax(0,24rem)] md:items-stretch md:justify-center md:gap-7 lg:mt-10 lg:gap-8">
+                    <Reveal className="flex h-full w-full text-left">
+                      <div className="flex h-full w-full flex-col rounded-[1.5rem] bg-white p-5 shadow-card md:p-6">
+                        <p className="text-sm font-semibold text-foreground">
+                          Nie możesz się skontaktować?
+                        </p>
+                        <p className="mt-1 text-xs text-muted-foreground">
+                          Zostaw numer, oddzwonimy do Ciebie.
+                        </p>
+                        <div className="mt-4 flex flex-col">
+                          <LeadForm idPrefix="contact-desktop" />
+                        </div>
+                      </div>
+                    </Reveal>
+
+                    <div className="flex h-full w-full flex-col gap-3.5">
+                      {contactCards.map((c, i) => (
+                        <ContactCard key={c.title} c={c} index={i} stretch />
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <div className="mx-auto mt-8 grid w-full max-w-md gap-3.5">
                     {contactCards.map((c, i) => (
-                      <ContactCard key={c.title} c={c} index={i} stretch />
+                      <ContactCard key={c.title} c={c} index={i} />
                     ))}
                   </div>
-                </div>
-              ) : (
-                <div className="mx-auto mt-8 grid w-full max-w-md gap-3.5">
-                  {contactCards.map((c, i) => (
-                    <ContactCard key={c.title} c={c} index={i} />
-                  ))}
-                </div>
-              )}
+                )}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* FOOTER */}
-      <footer className="relative rounded-t-[2rem] bg-primary px-4 pt-10 pb-24 text-white md:rounded-t-[3rem] md:pb-8">
-        <div className="mx-auto max-w-7xl text-center text-sm text-white/80">
-          <p className="font-bold text-white">{SITE_NAME} · {FOOTER_TAGLINE}</p>
-          <p className="mt-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
-            <a href={PHONE_HREF} className="inline-flex items-center gap-1.5 transition-smooth hover:text-white">
-              <Phone className="h-3.5 w-3.5" /> {PHONE_DISPLAY}
-            </a>
-            <a
-              href={EMAIL_HREF}
-              className="inline-flex max-w-full items-center gap-1.5 break-all transition-smooth hover:text-white"
-            >
-              <Mail className="h-3.5 w-3.5 shrink-0" /> {EMAIL}
-            </a>
-            {CONTACT_LOCATION ? (
+        {/* FOOTER */}
+        <footer className="relative rounded-t-[2rem] bg-primary px-4 pt-10 pb-24 text-white md:rounded-t-[3rem] md:pb-8">
+          <div className="mx-auto max-w-7xl text-center text-sm text-white/80">
+            <p className="font-bold text-white">
+              {SITE_NAME} · {FOOTER_TAGLINE}
+            </p>
+            <p className="mt-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
+              <a
+                href={PHONE_HREF}
+                className="inline-flex items-center gap-1.5 transition-smooth hover:text-white"
+              >
+                <Phone className="h-3.5 w-3.5" /> {PHONE_DISPLAY}
+              </a>
+              <a
+                href={EMAIL_HREF}
+                className="inline-flex max-w-full items-center gap-1.5 break-all transition-smooth hover:text-white"
+              >
+                <Mail className="h-3.5 w-3.5 shrink-0" /> {EMAIL}
+              </a>
+              {CONTACT_LOCATION ? (
+                <span className="inline-flex items-center gap-1.5">
+                  <MapPin className="h-3.5 w-3.5 shrink-0" /> {CONTACT_LOCATION}
+                </span>
+              ) : null}
               <span className="inline-flex items-center gap-1.5">
-                <MapPin className="h-3.5 w-3.5 shrink-0" /> {CONTACT_LOCATION}
+                <Clock className="h-3.5 w-3.5 shrink-0" /> {HOURS}
               </span>
-            ) : null}
-            <span className="inline-flex items-center gap-1.5">
-              <Clock className="h-3.5 w-3.5 shrink-0" /> {HOURS}
-            </span>
-          </p>
-          <p className="mt-3 text-xs text-white/65">NIP: {NIP}</p>
-          <p className="mt-4 flex flex-col items-center justify-center gap-1 text-xs text-white/65 md:flex-row md:flex-wrap md:gap-x-1 md:gap-y-0">
-            <Link
-              to="/polityka-prywatnosci"
-              className="underline underline-offset-2 transition-smooth hover:text-white"
-            >
-              Polityka Prywatności (RODO)
-            </Link>
-            <span className="md:before:mr-1 md:before:content-['·']">
-              © {new Date().getFullYear()} {SITE_NAME}. Wszelkie prawa zastrzeżone.
-            </span>
-          </p>
-        </div>
-      </footer>
+            </p>
+            <p className="mt-3 text-xs text-white/65">NIP: {NIP}</p>
+            <p className="mt-4 flex flex-col items-center justify-center gap-1 text-xs text-white/65 md:flex-row md:flex-wrap md:gap-x-1 md:gap-y-0">
+              <Link
+                to="/polityka-prywatnosci"
+                className="underline underline-offset-2 transition-smooth hover:text-white"
+              >
+                Polityka Prywatności (RODO)
+              </Link>
+              <span className="md:before:mr-1 md:before:content-['·']">
+                © {new Date().getFullYear()} {SITE_NAME}. Wszelkie prawa zastrzeżone.
+              </span>
+            </p>
+          </div>
+        </footer>
 
-      <StickyCallBar />
+        <StickyCallBar />
       </div>
     </div>
   );
@@ -1406,9 +1431,7 @@ function Section({
       id={id}
       className={cn(
         "relative scroll-mt-24 overflow-hidden px-4 pt-10 pb-14 text-foreground md:pt-16 md:pb-20",
-        tone === "muted"
-          ? "rounded-[2rem] bg-muted md:rounded-[3rem]"
-          : "bg-white",
+        tone === "muted" ? "rounded-[2rem] bg-muted md:rounded-[3rem]" : "bg-white",
         className,
       )}
     >

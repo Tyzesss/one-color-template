@@ -35,8 +35,7 @@ function normalizeAuthorName(name?: string): string {
 function curatedFallback(): GoogleReviewsPayload {
   const preset = getActivePreset();
   const profileUrl =
-    preset.googleReviewsUrl ??
-    `https://maps.google.com/?q=${encodeURIComponent(preset.mapsQuery)}`;
+    preset.googleReviewsUrl ?? `https://maps.google.com/?q=${encodeURIComponent(preset.mapsQuery)}`;
 
   return buildCuratedPayload(
     preset.reviews,
@@ -93,8 +92,7 @@ async function fetchLiveGoogleReviews(
 export async function getGoogleReviews(): Promise<GoogleReviewsPayload> {
   const preset = getActivePreset();
   const profileUrl =
-    preset.googleReviewsUrl ??
-    `https://maps.google.com/?q=${encodeURIComponent(preset.mapsQuery)}`;
+    preset.googleReviewsUrl ?? `https://maps.google.com/?q=${encodeURIComponent(preset.mapsQuery)}`;
   const placeId = preset.googlePlaceId;
   const apiKey = process.env.GOOGLE_PLACES_API_KEY;
 

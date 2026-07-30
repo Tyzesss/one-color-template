@@ -90,15 +90,14 @@
   --cta-hover: #00c4f0;
   --cta-foreground: #ffffff;
 
-  --gradient-hero: linear-gradient(
-    135deg,
-    #ffffff 0%,
-    #f8fafc 52%,
-    #eef6fb 100%
-  );
+  --gradient-hero: linear-gradient(135deg, #ffffff 0%, #f8fafc 52%, #eef6fb 100%);
   --gradient-cool: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
   --gradient-accent: linear-gradient(135deg, var(--cta), var(--brand-cyan));
-  --gradient-radial: radial-gradient(circle at 30% 20%, color-mix(in oklch, var(--cta) 12%, transparent), transparent 60%);
+  --gradient-radial: radial-gradient(
+    circle at 30% 20%,
+    color-mix(in oklch, var(--cta) 12%, transparent),
+    transparent 60%
+  );
 
   --ambient-blue: var(--brand-teal);
   --ambient-cyan: var(--brand-cyan);
@@ -114,9 +113,11 @@
   --shadow-cool: 0 12px 32px -20px rgb(15 30 75 / 0.06);
   --shadow-card: 0 1px 2px rgb(15 30 75 / 0.02), 0 2px 8px -4px rgb(15 30 75 / 0.04);
   --shadow-glow: 0 8px 24px -14px rgb(15 30 75 / 0.06);
-  --shadow-cta: 0 8px 24px -6px color-mix(in oklch, var(--cta) 35%, transparent),
+  --shadow-cta:
+    0 8px 24px -6px color-mix(in oklch, var(--cta) 35%, transparent),
     0 2px 8px color-mix(in oklch, var(--cta) 18%, transparent);
-  --shadow-cta-hover: 0 10px 28px -6px color-mix(in oklch, var(--brand-cyan) 40%, transparent),
+  --shadow-cta-hover:
+    0 10px 28px -6px color-mix(in oklch, var(--brand-cyan) 40%, transparent),
     0 2px 10px color-mix(in oklch, var(--cta) 20%, transparent);
   --shadow-btn-secondary-hover: 0 4px 16px -4px rgb(15 30 75 / 0.08);
 
@@ -149,7 +150,11 @@
   }
 
   body {
-    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    font-family:
+      "Inter",
+      system-ui,
+      -apple-system,
+      sans-serif;
     background-color: var(--background);
     color: var(--color-foreground);
     font-feature-settings: "ss01", "cv11";
@@ -433,11 +438,31 @@
     z-index: 0;
     overflow: hidden;
     background:
-      radial-gradient(ellipse 42% 34% at 14% 8%, color-mix(in oklch, var(--brand-cyan) 10%, transparent), transparent 68%),
-      radial-gradient(ellipse 36% 28% at 88% 18%, color-mix(in oklch, var(--cta) 8%, transparent), transparent 65%),
-      radial-gradient(ellipse 48% 38% at 72% 58%, color-mix(in oklch, var(--brand-cyan) 7%, transparent), transparent 70%),
-      radial-gradient(ellipse 38% 30% at 8% 72%, color-mix(in oklch, var(--cta) 6%, transparent), transparent 68%),
-      radial-gradient(ellipse 44% 32% at 52% 92%, color-mix(in oklch, var(--brand-cyan) 8%, transparent), transparent 66%);
+      radial-gradient(
+        ellipse 42% 34% at 14% 8%,
+        color-mix(in oklch, var(--brand-cyan) 10%, transparent),
+        transparent 68%
+      ),
+      radial-gradient(
+        ellipse 36% 28% at 88% 18%,
+        color-mix(in oklch, var(--cta) 8%, transparent),
+        transparent 65%
+      ),
+      radial-gradient(
+        ellipse 48% 38% at 72% 58%,
+        color-mix(in oklch, var(--brand-cyan) 7%, transparent),
+        transparent 70%
+      ),
+      radial-gradient(
+        ellipse 38% 30% at 8% 72%,
+        color-mix(in oklch, var(--cta) 6%, transparent),
+        transparent 68%
+      ),
+      radial-gradient(
+        ellipse 44% 32% at 52% 92%,
+        color-mix(in oklch, var(--brand-cyan) 8%, transparent),
+        transparent 66%
+      );
   }
 
   .page-content {

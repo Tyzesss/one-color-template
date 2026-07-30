@@ -54,7 +54,8 @@ export function buildCuratedPayload(
 export function pickTopReviews(reviews: GoogleReviewDisplay[], limit = 3): GoogleReviewDisplay[] {
   return [...reviews]
     .sort((a, b) => {
-      const nameScore = (r: GoogleReviewDisplay) => (r.authorName !== "Użytkownik Google Maps" ? 1 : 0);
+      const nameScore = (r: GoogleReviewDisplay) =>
+        r.authorName !== "Użytkownik Google Maps" ? 1 : 0;
       const lengthScore = (r: GoogleReviewDisplay) => r.text.length;
       return nameScore(b) - nameScore(a) || lengthScore(b) - lengthScore(a);
     })

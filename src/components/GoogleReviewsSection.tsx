@@ -82,12 +82,16 @@ function GoogleReviewCard({
               <GoogleIcon className="h-3.5 w-3.5" />
               Google Maps
             </span>
-            {dateLabel ? <span className="text-xs text-muted-foreground">· {dateLabel}</span> : null}
+            {dateLabel ? (
+              <span className="text-xs text-muted-foreground">· {dateLabel}</span>
+            ) : null}
           </div>
         </div>
       </div>
 
-      <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">&ldquo;{review.text}&rdquo;</p>
+      <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">
+        &ldquo;{review.text}&rdquo;
+      </p>
 
       <a
         href={verifyUrl}

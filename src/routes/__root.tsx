@@ -138,7 +138,10 @@ function RootShell({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
         <BrandColorsStyle />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: LOCAL_BUSINESS_JSON_LD }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: LOCAL_BUSINESS_JSON_LD }}
+        />
       </head>
       <body>
         {children}

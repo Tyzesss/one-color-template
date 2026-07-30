@@ -25,6 +25,7 @@ npm run new-preset firma-krakow
 Edytuj `src/lib/presets/firma-krakow.ts` — dane firmy, usługi, FAQ, galerię, opinie.
 
 Alternatywnie skopiuj **wzorzec profilu** jako punkt startowy:
+
 - `vertical-klimatyzacja` — firma od klimy
 - `vertical-pompy-ciepla` — pompy ciepła
 - `vertical-kotly` — kotły i ogrzewanie
@@ -34,21 +35,21 @@ Ustaw w `.env`: `VITE_SITE_PRESET=firma-krakow`
 
 ### 2. Zmienne środowiskowe (`.env`)
 
-| Zmienna | Opis |
-|---------|------|
-| `VITE_SITE_URL` | Domena produkcyjna (canonical, OG, sitemap) |
-| `VITE_SITE_PRESET` | Id presetu klienta, np. `firma-krakow` |
-| `VITE_WEB3FORMS_ACCESS_KEY` | Klucz Web3Forms (formularz kontaktowy) |
+| Zmienna                     | Opis                                        |
+| --------------------------- | ------------------------------------------- |
+| `VITE_SITE_URL`             | Domena produkcyjna (canonical, OG, sitemap) |
+| `VITE_SITE_PRESET`          | Id presetu klienta, np. `firma-krakow`      |
+| `VITE_WEB3FORMS_ACCESS_KEY` | Klucz Web3Forms (formularz kontaktowy)      |
 
 `VITE_CITY_PRESET` nadal działa (deprecated).
 
 ### 3. Assety
 
-| Plik | Opis |
-|------|------|
-| `public/logo.svg` (lub `.png`) | Logo firmy |
-| `public/gallery/*` | Realizacje klienta |
-| `public/favicon.svg` | Ikona strony |
+| Plik                           | Opis               |
+| ------------------------------ | ------------------ |
+| `public/logo.svg` (lub `.png`) | Logo firmy         |
+| `public/gallery/*`             | Realizacje klienta |
+| `public/favicon.svg`           | Ikona strony       |
 
 Po wgraniu JPG: `node scripts/optimize-gallery.mjs`
 
@@ -96,13 +97,13 @@ Komponenty czytają dane przez `src/lib/site.ts` — **nie edytuj ich** przy per
 
 ## Presety-wzorce (profile HVAC)
 
-| Id presetu | Profil |
-|------------|--------|
-| `default` | Demo KLIMATPRO (matka z logo i zdjęciami, uniwersalne miasto) |
-| `vertical-klimatyzacja` | Klimatyzacja |
-| `vertical-pompy-ciepla` | Pompy ciepła |
-| `vertical-kotly` | Kotły i ogrzewanie |
-| `vertical-mix-hvac` | Mix HVAC |
+| Id presetu              | Profil                                                        |
+| ----------------------- | ------------------------------------------------------------- |
+| `default`               | Demo KLIMATPRO (matka z logo i zdjęciami, uniwersalne miasto) |
+| `vertical-klimatyzacja` | Klimatyzacja                                                  |
+| `vertical-pompy-ciepla` | Pompy ciepła                                                  |
+| `vertical-kotly`        | Kotły i ogrzewanie                                            |
+| `vertical-mix-hvac`     | Mix HVAC                                                      |
 
 Podgląd wzorca: ustaw `VITE_SITE_PRESET=vertical-klimatyzacja` w `.env`.
 
@@ -144,7 +145,7 @@ scripts/new-preset.mjs       ← generator presetu
 ## Deploy (Vercel)
 
 - Build Command: `npm run build`
-- Output Directory: *(puste — Nitro generuje `.vercel/output`)*
+- Output Directory: _(puste — Nitro generuje `.vercel/output`)_
 - Env: `VITE_SITE_URL`, `VITE_SITE_PRESET`, `VITE_WEB3FORMS_ACCESS_KEY`
 
 ---

@@ -2,10 +2,7 @@ import { Calendar, ClipboardCheck, Phone, type LucideIcon } from "lucide-react";
 
 import { Reveal } from "@/components/Reveal";
 import { useReveal } from "@/hooks/use-reveal";
-import {
-  HOW_IT_WORKS_STEPS,
-  SECTION_TITLES,
-} from "@/lib/site";
+import { HOW_IT_WORKS_STEPS, SECTION_TITLES } from "@/lib/site";
 import type { HowItWorksStepIcon } from "@/lib/presets";
 import { cn } from "@/lib/utils";
 

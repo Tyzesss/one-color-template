@@ -158,11 +158,7 @@ export const verticalMixHvacPreset = withPresetDefaults({
     },
     {
       label: "Wentylacja i ogrzewanie",
-      options: [
-        "Montaż rekuperacji",
-        "Serwis kotła gazowego",
-        "Przegląd i konserwacja ogrzewania",
-      ],
+      options: ["Montaż rekuperacji", "Serwis kotła gazowego", "Przegląd i konserwacja ogrzewania"],
     },
     {
       label: "Inne",

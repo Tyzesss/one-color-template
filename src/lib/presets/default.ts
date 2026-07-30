@@ -139,7 +139,7 @@ export const defaultPreset = withPresetDefaults({
   ],
   heroHeadline: "Instalacje grzewcze i klimatyzacyjne",
   heroHeadlineMobileLines: ["Instalacje grzewcze", "i klimatyzacyjne"],
-  heroBadge: "Bezpłatna wycena",
+  heroBadge: "Montaż i serwis",
   heroBullets: [
     "Pompy ciepła, rekuperacja, klimatyzacja i kotły.",
     "Zakres i wycena ustalane przed rozpoczęciem prac.",
@@ -150,7 +150,7 @@ export const defaultPreset = withPresetDefaults({
     { label: "Split, multi-split, pompy ciepła", icon: "snowflake" },
     { label: "Dojazd tego samego dnia przy awarii", icon: "map-pin" },
   ],
-  footerTagline: "Instalacje Sanitarne",
+  footerTagline: "Instalacje grzewcze i klimatyzacyjne",
   servicesSectionSubtitle:
     "Montaż, serwis i przeglądy klimatyzacji, pomp ciepła, wentylacji oraz urządzeń grzewczych.",
   gallerySectionSubtitle: "Realizacje montażowe i serwisowe KLIMATPRO w Twoim mieście i okolicach.",

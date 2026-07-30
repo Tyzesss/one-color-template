@@ -154,7 +154,7 @@ function HeroReviewStamp({
           <Star key={i} className="h-3.5 w-3.5 fill-amber-400 text-amber-400 md:h-[1.125rem] md:w-[1.125rem]" />
         ))}
       </div>
-      <span className="text-lg font-bold leading-none text-primary md:text-2xl">
+      <span className="text-lg font-bold leading-none text-foreground md:text-2xl">
         {rating.toFixed(1)}
       </span>
       <span className="text-xs text-muted-foreground md:text-sm">
@@ -441,7 +441,7 @@ function ServiceCard({ s, index }: { s: ServiceItem & { icon: typeof Wrench }; i
       )}
       style={{ transitionDelay: `${index * 80}ms` }}
     >
-      <div className="relative aspect-[16/9] shrink-0 overflow-hidden bg-brand-deep">
+      <div className="relative aspect-[4/3] shrink-0 overflow-hidden bg-brand-deep md:aspect-[16/9]">
         {showImage ? (
           <img
             src={s.image}
@@ -756,6 +756,17 @@ function easeOutCubic(t: number) {
   return 1 - (1 - t) ** 3;
 }
 
+/** Collapsed navbar offset — ignores open/closing #mobile-nav height. */
+function getNavScrollOffset() {
+  const header = document.querySelector("header");
+  if (!header) return HEADER_HEIGHT + SECTION_GAP;
+  const bar = header.querySelector<HTMLElement>(":scope > .mx-auto");
+  if (bar) {
+    return bar.getBoundingClientRect().bottom + SECTION_GAP;
+  }
+  return HEADER_HEIGHT + SECTION_GAP;
+}
+
 /** Own tween — avoids CSS `scroll-behavior` / native hash fights on mobile. */
 function animateScrollTo(targetY: number, durationMs = 500) {
   const startY = window.scrollY;
@@ -788,15 +799,15 @@ function scrollToSection(href: string) {
   const section = document.getElementById(id);
   if (!section) return;
 
-  // Content wrapper (skips section padding void under the navbar).
+  // Prefer section title/content wrapper when present (skips outer padding void).
   const content =
-    section.querySelector<HTMLElement>(":scope > .relative") ?? section;
+    section.querySelector<HTMLElement>(":scope > .relative.mx-auto") ??
+    section.querySelector<HTMLElement>(":scope > .relative") ??
+    section;
 
-  const header = document.querySelector("header");
-  const headerH = header?.getBoundingClientRect().height ?? HEADER_HEIGHT;
   const targetY = Math.max(
     0,
-    content.getBoundingClientRect().top + window.scrollY - headerH - SECTION_GAP,
+    content.getBoundingClientRect().top + window.scrollY - getNavScrollOffset(),
   );
 
   animateScrollTo(targetY);
@@ -884,7 +895,7 @@ function SiteHeader() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-muted-foreground transition-smooth hover:text-primary hover:underline hover:underline-offset-4"
+                className="text-muted-foreground transition-smooth hover:text-primary"
               >
                 {link.label}
               </a>
@@ -1107,7 +1118,7 @@ function Index() {
           </div>
         </div>
 
-          <div className="relative z-10 mt-auto flex justify-center pb-8 pt-5 md:pb-7 md:pt-6">
+          <div className="relative z-10 mt-auto flex justify-center pb-5 pt-5 md:pb-7 md:pt-6">
             <a
               href="#uslugi"
               onClick={(e) => {
@@ -1168,6 +1179,7 @@ function Index() {
           eyebrow={SECTION_TITLES.reviewsEyebrow}
           title={SECTION_TITLES.reviewsTitle}
           subtitle={SECTION_TITLES.reviewsSubtitle}
+          subtitleClassName="hidden md:block"
         >
           <GoogleReviewsSection data={googleReviews} />
         </Section>
@@ -1298,7 +1310,9 @@ function Index() {
       {/* FOOTER */}
       <footer className="relative rounded-t-[2rem] bg-primary px-4 pt-10 pb-24 text-white md:rounded-t-[3rem] md:pb-8">
         <div className="mx-auto max-w-7xl text-center text-sm text-white/80">
-          <p className="font-bold text-white">{SITE_NAME} · {FOOTER_TAGLINE}</p>
+          <p className="mx-auto max-w-[16.5rem] font-bold leading-snug text-white md:max-w-none">
+            {SITE_NAME} · {FOOTER_TAGLINE}
+          </p>
           <p className="mt-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
             <a href={PHONE_HREF} className="inline-flex items-center gap-1.5 transition-smooth hover:text-white">
               <Phone className="h-3.5 w-3.5" /> {PHONE_DISPLAY}
@@ -1352,6 +1366,7 @@ function Section({
   eyebrow,
   title,
   subtitle,
+  subtitleClassName,
   children,
   glow,
   panel = false,
@@ -1362,6 +1377,7 @@ function Section({
   eyebrow?: string;
   title: string;
   subtitle?: string;
+  subtitleClassName?: string;
   children: ReactNode;
   glow?: SectionGlow;
   panel?: boolean;
@@ -1378,7 +1394,7 @@ function Section({
     : undefined;
 
   const header = (
-    <Reveal className={`text-center ${eyebrow ? "mb-6 md:mb-10" : "mb-8 md:mb-12"}`}>
+    <Reveal className={`text-center ${eyebrow ? "mb-5 md:mb-10" : "mb-8 md:mb-12"}`}>
       {eyebrow && <p className="section-eyebrow">{eyebrow}</p>}
       <h2
         className={cn(
@@ -1393,6 +1409,7 @@ function Section({
           className={cn(
             "text-sm leading-relaxed text-muted-foreground md:text-base lg:text-lg",
             eyebrow ? "mt-1.5" : "mt-2",
+            subtitleClassName,
           )}
         >
           {subtitle}

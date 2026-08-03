@@ -872,10 +872,11 @@ function SiteHeader() {
       <header
         className={cn(
           "fixed inset-x-0 top-0 z-50 transition-[border-color,border-radius,box-shadow,padding,background-color] duration-500 ease-out",
-          solid
-            ? "rounded-b-[2rem] border-b border-[#f1f5f9] bg-white py-1.5 shadow-card md:rounded-b-[3rem] md:py-2"
-            : "rounded-none border-b border-transparent bg-transparent py-3 md:py-5",
-          menuOpen && "bg-white",
+          menuOpen
+            ? "overflow-hidden rounded-b-[2rem] border-b border-[#f1f5f9] bg-white py-1.5 shadow-card"
+            : solid
+              ? "rounded-b-[2rem] border-b border-[#f1f5f9] bg-white py-1.5 shadow-card md:rounded-b-[3rem] md:py-2"
+              : "rounded-none border-b border-transparent bg-transparent py-3 md:py-5",
         )}
       >
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 md:h-[5.25rem]">
@@ -945,7 +946,7 @@ function SiteHeader() {
           inert={!menuOpen ? true : undefined}
         >
           <div className="overflow-hidden">
-            <div className="border-t border-[#f1f5f9] px-4 pb-3 pt-2">
+            <div className="border-t border-[#f1f5f9] px-4 pb-4 pt-2">
               <nav className="flex flex-col gap-0.5">
                 {NAV_LINKS.map((link) => (
                   <a
@@ -962,17 +963,15 @@ function SiteHeader() {
                   </a>
                 ))}
               </nav>
-              <div className="mt-1.5 border-t border-[#f1f5f9] pt-2.5">
-                <a
-                  href={PHONE_HREF}
-                  tabIndex={menuOpen ? undefined : -1}
-                  className="btn-cta flex w-full items-center justify-center gap-2 py-2.5 text-sm"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  <Phone className="h-4 w-4 shrink-0" />
-                  <span>Zadzwoń · {PHONE_DISPLAY}</span>
-                </a>
-              </div>
+              <a
+                href={PHONE_HREF}
+                tabIndex={menuOpen ? undefined : -1}
+                className="mt-3 flex w-full items-center justify-center gap-2 rounded-full bg-primary px-4 py-3 text-sm font-semibold text-white shadow-[0_6px_18px_-6px_color-mix(in_oklch,var(--cta)_40%,transparent)] transition-colors duration-200 hover:bg-[var(--cta-hover)] active:bg-[var(--cta-hover)]"
+                onClick={() => setMenuOpen(false)}
+              >
+                <Phone className="h-4 w-4 shrink-0" />
+                <span>Zadzwoń · {PHONE_DISPLAY}</span>
+              </a>
             </div>
           </div>
         </div>
